@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "home#index"
   get "privacy", to: "home#privacy"
+  get "term", to: "home#term"
 end
