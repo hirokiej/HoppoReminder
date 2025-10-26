@@ -63,6 +63,7 @@ group :development do
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'slim_lint', require: false
   gem 'spring-commands-rspec'
 end
