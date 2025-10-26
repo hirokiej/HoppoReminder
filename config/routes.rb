@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "home#index"
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'log_out', to: 'sessions#destroy', as: 'log_out'
+
+  resources :sessions, only: %i[create destroy]
+
   get "privacy", to: "home#privacy"
   get "term", to: "home#term"
 end
