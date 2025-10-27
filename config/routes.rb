@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root 'home#index'
+  resources :admins do
+    member do
+      get 'line_info', to: 'admin/line_infos#edit'
+      patch 'line_info', to: 'admin/line_infos#update'
+    end
+  end
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
