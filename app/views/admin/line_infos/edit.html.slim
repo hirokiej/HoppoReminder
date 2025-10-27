@@ -1,0 +1,14 @@
+h1 公式LINE予約投稿のための情報を入力
+
+= form_with model: current_user, url: line_info_admin_path, method: :patch do |f|
+  div
+    = f.label :line_channel_id
+    = f.text_field :line_channel_id
+  div
+    = f.label :line_channel_access_token
+    = f.text_field :line_channel_access_token
+  div
+    = f.label :line_channel_secret
+    = f.text_field :line_channel_secret
+  div
+    = f.submit "保存"
