@@ -2,10 +2,19 @@ class SessionsController < ApplicationController
   skip_before_action :check_logged_in, only: :create
 
   def create
-    if (admin = Admin.find_or_create_from_auth_hash(auth_hash))
-      log_in admin
+    admin = Admin.find_or_create_from_auth_hash(auth_hash)
+
+    unless admin
+      redirect_to root_path, alert: 'ログインに失敗しました'
     end
-    redirect_to root_path
+
+    log_in admin
+
+    if admin.line_channel_id.blank?
+      redirect_to line_info_admin_path(admin)
+    else
+      reidirect_to schedule_path
+    end
   end
 
   def destroy
