@@ -1,11 +1,11 @@
 class Admin < ApplicationRecord
   has_many :students, dependent: :destroy
 
-  encrypts :google_token
-  encrypts :google_refresh_token
+  encrypts :google_token, deterministic: true
+  encrypts :google_refresh_token, deterministic: true
   encrypts :email, deterministic: true
-  encrypts :line_channel_secret
-  encrypts :line_channel_access_token
+  encrypts :line_channel_secret, deterministic: true
+  encrypts :line_channel_access_token, deterministic: true
 
   class << self
     def find_or_create_from_auth_hash(auth_hash)

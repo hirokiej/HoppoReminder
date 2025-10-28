@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
+  post '/line_webhook/callback', to: 'line_webhook#callback'
 
   resources :sessions, only: %i[create destroy]
   resources :students, only: :index
