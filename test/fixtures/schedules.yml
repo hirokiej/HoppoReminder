@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  summary: MyString
+  google_event_id: MyString
+  start_at: 2025-10-29 00:51:41
+
+two:
+  student: two
+  summary: MyString
+  google_event_id: MyString
+  start_at: 2025-10-29 00:51:41
