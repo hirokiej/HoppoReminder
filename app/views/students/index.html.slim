@@ -1,1 +1,17 @@
-= link_to "TOPへ", root_path
+= form_with model: current_user,
+            url: bulk_update_students_path,
+            method: :patch do |f|
+  ul
+    - current_user.students.each do |student|
+      li
+        = f.fields_for :students, student do |s|
+          = "LINEの表示名: #{student.line_display_name}"
+          - if student.real_name.present?
+            = "カレンダーの登録名: #{student.real_name}"
+          br
+          = s.label :real_name, 'カレンダーで使っている名前を入力'
+          = s.hidden_field :id
+          = s.text_field :real_name
+  = f.submit '更新'
+
+= link_to 'TOPへ', root_path
