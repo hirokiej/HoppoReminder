@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
 
   resources :sessions, only: %i[create destroy]
+  resources :students, only: :index
 
   get 'privacy', to: 'home#privacy'
   get 'term', to: 'home#term'
