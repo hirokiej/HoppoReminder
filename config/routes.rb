@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       patch 'line_info', to: 'admin/line_infos#update'
     end
   end
+  resources :students do
+    collection do
+      patch :bulk_update
+    end
+  end
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

@@ -1,5 +1,6 @@
 class Admin < ApplicationRecord
   has_many :students, dependent: :destroy
+  accepts_nested_attributes_for :students
 
   encrypts :google_token, deterministic: true
   encrypts :google_refresh_token, deterministic: true
