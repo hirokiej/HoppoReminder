@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_26_062840) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_28_024333) do
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
@@ -24,4 +24,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_26_062840) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["line_channel_id"], name: "index_admins_on_line_channel_id", unique: true
   end
+
+  create_table "students", force: :cascade do |t|
+    t.integer "admin_id", null: false
+    t.string "line_user_id", null: false
+    t.string "line_display_name"
+    t.string "real_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_students_on_admin_id"
+    t.index ["line_user_id"], name: "index_students_on_line_user_id", unique: true
+  end
+
+  add_foreign_key "students", "admins"
 end

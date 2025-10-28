@@ -1,4 +1,6 @@
 class Admin < ApplicationRecord
+  has_many :students, dependent: :destroy
+
   encrypts :google_token
   encrypts :google_refresh_token
   encrypts :email, deterministic: true
