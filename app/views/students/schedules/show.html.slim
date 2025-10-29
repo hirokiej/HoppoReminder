@@ -1,0 +1,5 @@
+= "#{@student.real_name}のレッスン一覧"
+- @student.schedules.each do |schedule|
+  li
+    = schedule.summary
+    = format_japanese_datetime(schedule.start_at)
