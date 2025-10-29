@@ -1,0 +1,5 @@
+- @schedules.each do |schedule|
+  li
+    = schedule[:summary]
+    = schedule.student.real_name
+    = format_japanese_datetime(schedule.start_at)
