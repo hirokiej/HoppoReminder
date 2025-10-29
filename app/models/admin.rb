@@ -25,4 +25,11 @@ class Admin < ApplicationRecord
       }
     end
   end
+
+  def update_google_tokens(auth_hash)
+    update(
+      google_token: auth_hash.credentials.token,
+      google_refresh_token: auth_hash.credentials.refresh_token
+    )
+  end
 end

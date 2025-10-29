@@ -3,18 +3,12 @@ class SessionsController < ApplicationController
 
   def create
     admin = Admin.find_or_create_from_auth_hash(auth_hash)
+    return redirect_to root_path, alert: 'ログインに失敗しました' unless admin
 
-    unless admin
-      redirect_to root_path, alert: 'ログインに失敗しました'
-    end
-
+    admin.update_google_tokens(auth_hash)
     log_in admin
 
-    if admin.line_channel_id.blank?
-      redirect_to line_info_admin_path(admin)
-    else
-      reidirect_to schedule_path
-    end
+      redirect_to admin.line_channel_id.blank? ? line_info_admin_path(admin) : schedules_path
   end
 
   def destroy
