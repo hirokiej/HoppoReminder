@@ -1,0 +1,8 @@
+= @schedule.summary
+'変更前の日時'
+= format_japanese_datetime(@schedule.start_at)
+'変更後の日時'
+= form_with model: @schedule do |f|
+  div
+    = f.datetime_field :start_at, value: @schedule.start_at.to_date
+  = f.submit '更新'

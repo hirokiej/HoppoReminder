@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       patch :bulk_update
     end
   end
-  resources :schedules, only: :index
+  resources :schedules, only: %i[index edit update]
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
