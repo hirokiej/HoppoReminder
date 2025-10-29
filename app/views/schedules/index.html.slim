@@ -1,5 +1,5 @@
 - @schedules.each do |schedule|
   li
     = schedule[:summary]
-    = schedule.student.real_name
+    = link_to schedule.student.real_name, edit_schedule_path(schedule)
     = format_japanese_datetime(schedule.start_at)
