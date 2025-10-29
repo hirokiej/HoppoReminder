@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :set_schedules, only: :index
   before_action :set_schedule, only: %i[edit update]
 
   def index
