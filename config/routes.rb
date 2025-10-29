@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       patch :bulk_update
     end
   end
+  namespace :students do
+    get 'schedules/show'
+  end
   resources :schedules, only: %i[index edit update]
 
   get 'auth/:provider/callback', to: 'sessions#create'
