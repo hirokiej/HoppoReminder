@@ -22,10 +22,11 @@ Rails.application.routes.draw do
     collection do
       patch :bulk_update
     end
+    member do
+      get :schedules, to: 'students/schedules#show'
+    end
   end
-  namespace :students do
-    get 'schedules/show'
-  end
+
   resources :schedules, only: %i[index edit update]
 
   get 'auth/:provider/callback', to: 'sessions#create'
