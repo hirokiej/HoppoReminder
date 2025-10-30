@@ -68,17 +68,14 @@ group :development do
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
   gem 'rubocop-capybara', require: false
   gem 'slim_lint', require: false
-  gem 'spring-commands-rspec'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
 end
 
 gem 'tailwindcss-rails', '~> 4.3'
