@@ -3,7 +3,7 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 plugins:
   - rubocop-rails
   - rubocop-performance
-  - rubocop-rspec
+  - rubocop-minitest
   - rubocop-capybara
 
 AllCops:
