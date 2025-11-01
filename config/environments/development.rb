@@ -72,4 +72,7 @@ Rails.application.configure do
 
   # 開発環境でWebhookを受け取るためのURL
   config.hosts << 'tori-aweigh-harlee.ngrok-free.dev'
+
+  config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
 end
