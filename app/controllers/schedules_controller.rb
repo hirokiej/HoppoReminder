@@ -1,4 +1,8 @@
 class SchedulesController < ApplicationController
+  NOTICE_TIME_BEFORE_LESSON = 1.day
+  NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
+  NOTICE_HOUR = 20
+
   before_action :set_schedules, only: :index
   before_action :set_schedule, only: %i[edit update]
 
@@ -10,8 +14,10 @@ class SchedulesController < ApplicationController
   def edit;end
 
   def update
+    first_start_at = @schedule.start_at
     if @schedule.update(schedule_params)
       update_google_event(@schedule)
+      notification_message(first_start_at)
 
       redirect_to schedules_path, notice: '日時を変更しました'
     else
@@ -63,5 +69,24 @@ class SchedulesController < ApplicationController
 
   def set_schedule
     @schedule = Schedule.find(params[:id])
+  end
+
+  def notification_message(first_start_at)
+    notification_time = @schedule.start_at
+    LessonTimeNotificationsJob.perform_now(@schedule.id, @schedule.student.id, :notice_now)
+    enqueue_notification(
+      (notification_time - NOTICE_TIME_BEFORE_LESSON).change(hour: NOTICE_HOUR, min: 0),
+      :before_lesson
+    )
+    enqueue_notification(
+      (first_start_at - NOTICE_TIME_NO_LESSON_TOMORROW).change(hour: NOTICE_HOUR, min: 0),
+      :no_lesson_tomorrow
+    )
+  end
+
+  def enqueue_notification(wait_until, type)
+    LessonTimeNotificationsJob
+    .set(wait_until: wait_until)
+    .perform_later(@schedule.id, @schedule.student.id, type)
   end
 end
