@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: %i[create destroy]
   resources :students, only: :index
+  resources :calendars, only: :index
 
   get 'privacy', to: 'home#privacy'
   get 'term', to: 'home#term'
