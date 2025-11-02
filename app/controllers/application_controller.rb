@@ -16,13 +16,12 @@ class ApplicationController < ActionController::Base
   def fetch_google_calendar_events(admin)
     calendar_service = google_calendar_service_for(admin)
 
-    calendar_id = 'primary'
     response = calendar_service.list_events(
-      calendar_id,
+      'primary',
       max_results: 50,
       single_events: true,
       order_by: 'startTime',
-      time_min: Time.now.iso8601
+      time_min: 1.year.ago.iso8601
       )
 
     response.items.map do |schedule|
