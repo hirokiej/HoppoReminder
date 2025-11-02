@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = csp_meta_tag
+    = yield :head
+    = stylesheet_link_tag :app, "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  body
+    header
+    - if current_user
+      = "#{current_user.name}さん"
+      = link_to "ログアウト", log_out_path
+    - else
+      = "ゲストさん"
+      = button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false }
+
+    = render "shared/tab_menu", tabs: tab_menus
+    = yield
+
