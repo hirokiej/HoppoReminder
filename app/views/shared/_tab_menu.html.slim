@@ -1,0 +1,8 @@
+ul.flex.border-b.list-none
+  - tabs.each do |tab|
+    li.mr-1
+      - active = current_page?(tab[:path])
+      = link_to tab[:name], tab[:path], \
+      class: "inline-block py-2 px-4 border-b-2 font-semibold \
+      #{active ? 'text-blue-600 border-blue-600' \
+      : 'border-transparent text-gray-600 hover:text-blue-600'}"
