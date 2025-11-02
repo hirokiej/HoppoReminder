@@ -32,6 +32,7 @@
         <%= button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false } %>
       <% end %>
     </header>
+    <%= render "shared/tab_menu", tabs: tab_menus %>
     <%= yield %>
   </body>
 </html>
