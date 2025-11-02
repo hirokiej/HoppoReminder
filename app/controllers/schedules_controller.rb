@@ -8,7 +8,11 @@ class SchedulesController < ApplicationController
 
   def index
     schedules = fetch_google_calendar_events(current_user)
-    update_lesson_events(schedules)
+    upcoming_schedules = schedules.select { |schedule| schedule[:start] >= Time.current }
+    update_lesson_events(upcoming_schedules)
+
+    today = Date.current
+    @schedules = @schedules.where('start_at >= ?', Time.current)
   end
 
   def edit;end
@@ -64,7 +68,7 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedules
-    @schedules = Schedule.where(student: current_user.students)
+    @schedules = Schedule.where(student: current_user.students).order(:start_at)
   end
 
   def set_schedule
