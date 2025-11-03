@@ -1,5 +1,7 @@
-= "#{@student.real_name}のレッスン一覧"
-- @student.schedules.each do |schedule|
-  li
-    = schedule.summary
-    = format_japanese_datetime(schedule.start_at)
+= turbo_frame_tag 'student_schedules' do
+  = "#{@student.real_name}のレッスン一覧"
+  - @schedules.each do |schedule|
+    li
+      = schedule.summary
+      = format_japanese_datetime(schedule.start_at)
+      = link_to '変更', edit_schedule_path(schedule), method: :get
