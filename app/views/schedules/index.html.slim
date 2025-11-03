@@ -1,5 +1,4 @@
-- @schedules.each do |schedule|
-  li
-    = schedule[:summary]
-    = link_to schedule.student.real_name, edit_schedule_path(schedule)
-    = format_japanese_datetime(schedule.start_at)
+= form_with url: '#', method: :get do |f|
+  = f.label :student_id, 'レッスンを変更する生徒'
+  = f.collection_select :student_id, current_user.students, :id, :real_name, { include_blank: '生徒を選択' }
+  
