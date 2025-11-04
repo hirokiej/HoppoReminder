@@ -10,13 +10,5 @@ html
     = turbo_frame_tag 'modal',
       data: { controller: 'modal' },
       class: 'hidden fixed inset-0 z-30 flex items-center justify-center bg-black/50'
-    header
-    - if current_user
-      = '#{current_user.name}さん'
-      = link_to 'ログアウト', log_out_path
-    - else
-      = 'ゲストさん'
-      = button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false }
-
-    = render 'shared/tab_menu', tabs: tab_menus
+    = render 'layouts/header'
     = yield
