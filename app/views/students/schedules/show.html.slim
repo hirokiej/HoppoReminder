@@ -4,4 +4,5 @@
     li
       = schedule.summary
       = format_japanese_datetime(schedule.start_at)
-      = link_to '変更', edit_schedule_path(schedule), method: :get
+      = link_to '変更', edit_schedule_path(schedule),
+        data: { turbo_frame: 'modal', action: 'click->modal#open' }
