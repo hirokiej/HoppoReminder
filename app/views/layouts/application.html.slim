@@ -7,8 +7,6 @@ html
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
     = javascript_importmap_tags
   body
-    = turbo_frame_tag 'modal',
-      data: { controller: 'modal' },
-      class: 'hidden fixed inset-0 z-30 flex items-center justify-center bg-black/50'
+    = render 'shared/modal'
     = render 'layouts/header'
     = yield
