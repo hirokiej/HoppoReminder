@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "🔍 Running RuboCop..."
+bundle exec rubocop
+
+echo "🧼 Running Slim Lint..."
+bundle exec slim-lint app/views
+
+echo "🔎 Running ESLint..."
+npx eslint app/javascript
+
+echo "🎨 Checking Prettier formatting..."
+npx prettier --check app/
