@@ -1,9 +1,23 @@
 = turbo_frame_tag 'modal' do
-  = @schedule.summary
-  | 変更前の日時
-  = format_japanese_datetime(@schedule.start_at)
-  | 変更後の日時
-  = form_with model: @schedule, data: { turbo: false } do |f|
-    div
-      = f.datetime_field :start_at, value: @schedule.start_at.to_date
-    = f.submit '更新'
+  .bg-white.rounded-lg.shadow-lg.p-6.w-96.relative
+    h2.text-lg.font-bold.mb-4 #{@schedule.student.real_name}のレッスン変更
+
+    p.text-gray-700.mb-2
+      | 現在の日時：
+    p.text-lg
+      = format_japanese_datetime(@schedule.start_at)
+
+    = form_with model: @schedule, data: { turbo: false } do |f|
+      .mb-4
+        = f.label :start_at, '変更後の日時',
+          class: 'block text-sm font-medium text-gray-700 mb-1'
+        = f.datetime_field :start_at,
+          value: @schedule.start_at.to_date,
+          class: 'border rounded p-2 w-full'
+
+      .flex.justify-end.gap-2
+        = f.submit '変更する',
+          class: 'bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded'
+        = button_tag 'キャンセル', type: 'button',
+          data: { action: 'click->modal#close' },
+          class: 'bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded'
