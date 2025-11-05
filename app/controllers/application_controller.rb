@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   include SessionsHelper
+  helper NavigationHelper
   helper_method :current_user
 
   before_action :check_logged_in
