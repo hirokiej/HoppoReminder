@@ -1,6 +1,6 @@
 - if current_user
   header
-    /#ロゴができたらここに貼る = image_tag
+    = image_tag 'logo_long.svg', class: 'h-20 w-auto', alt: 'ほっぽリマインダーの横長ロゴです。レッスン変更へ遷移します。'
     .text-right
       = link_to 'ログアウト', log_out_path
     = render 'shared/tab_menu', tabs: navigation_tabs
