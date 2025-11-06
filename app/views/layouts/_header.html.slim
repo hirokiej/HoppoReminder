@@ -1,6 +1,9 @@
 - if current_user
-  header
-    = image_tag 'logo_long.svg', class: 'h-20 w-auto', alt: 'ほっぽリマインダーの横長ロゴです。レッスン変更へ遷移します。'
-    .text-right
-      = link_to 'ログアウト', log_out_path
+  header data-controller='burger-menu'
+    = image_tag 'logo_long.svg', class: 'h-20 w-auto'
+    .inline-block.rounded-lg.hover:opacity-70 { data={ action: 'click->burger-menu#toggle' } }
+      = image_tag 'burger_menu.svg',
+        class: 'h-20 w-auto p-2',
+        alt: 'サイトに関するメニューです'
+    = render 'shared/hamburger_menu'
     = render 'shared/tab_menu', tabs: navigation_tabs

@@ -1,0 +1,5 @@
+#hamburger-modal.hidden.bg-white.rounded-lg.relative(data-burger-menu-target='modal')
+  li = link_to 'ログアウト', log_out_path
+  li = link_to '退会する', admin_path(current_user),
+    data: { turbo_method: :delete,
+            turbo_confirm: 'データを全て削除します。(「Googleカレンダー」や「LINE公式」に影響はありません。)' }
