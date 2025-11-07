@@ -43,6 +43,7 @@ gem 'thruster', require: false
 gem 'googleauth'
 gem 'google-apis-calendar_v3'
 gem 'line-bot-api'
+gem 'meta-tags'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
