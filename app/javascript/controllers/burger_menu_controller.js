@@ -10,4 +10,11 @@ export default class extends Controller {
     this.showing = !this.showing
     this.modalTarget.classList.toggle('hidden', !this.showing)
   }
+
+  clickOutside(e) {
+    if (e.target === e.currentTarget) {
+      console.log('oooooooooo')
+      return this.toggle()
+    }
+  }
 }
