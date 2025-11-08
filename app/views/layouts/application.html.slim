@@ -9,8 +9,10 @@ html
     = javascript_importmap_tags
     = favicon_link_tag('favicon.ico')
     = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180×180', type: 'image/png'
-  body
+  body.bg-sky-200.max-w-screen-sm.mx-auto.min-h-screen.flex.flex-col
     = render 'shared/modal'
     = render 'layouts/header'
-    = yield
+    main.bg-gray-100.pb-2.flex-1
+      .text-center
+        = yield
     = render 'shared/footer'
