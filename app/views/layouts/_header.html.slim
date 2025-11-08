@@ -1,7 +1,8 @@
 - if current_user
   header data-controller='burger-menu'
-    = image_tag 'logo_long.svg', class: 'h-20 w-auto'
-    .inline-block.rounded-lg.hover:opacity-70 { data={ action: 'click->burger-menu#toggle' } }
+    .flex.items-center.justify-between
+      = link_to root_path do
+        = image_tag 'logo_long.svg', class: 'flex h-20 w-auto'
       = image_tag 'burger_menu.svg',
         class: 'h-20 w-auto p-2',
         alt: 'サイトに関するメニューです'
