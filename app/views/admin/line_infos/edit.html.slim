@@ -1,15 +1,44 @@
 - set_meta_tags title: 'LINE公式の情報を登録', description: 'LINE公式の情報を入力するページです'
-h1 公式LINE予約投稿のための情報を入力
+
+h1.text-xl.font-bold.py-4
+  | 公式LINEの情報を入力
+.text-sm.px-4.py-2
+  p
+    | 公式LINEと本アプリを連携するために、
+    = link_to '公式LINEのアカウント', 'https://account.line.biz/login',
+        class: 'text-blue-600 underline hover:text-gray-400',
+        target: '_blank', rel: 'noopener'
+    | にログインし、必要な情報を入力してください。
+  p
+    | ※ 取得した情報はアカウントへのアクセス権限を持つ重要な情報です。
+    | 厳重に管理してください。
+    | 入力後は本アプリでは使用しないので、覚えておく必要はありません。
+p.py-4
+  | 情報取得方法は
+  = link_to 'こちら', 'https://scrapbox.io/HoppoReminder/LINE公式の情報取得方法',
+      class: 'text-blue-600 underline hover:text-gray-400',
+      target: '_blank', rel: 'noopener'
 
 = form_with model: current_user, url: line_info_admin_path, method: :patch do |f|
-  div
-    = f.label :line_channel_id
-    = f.text_field :line_channel_id
-  div
-    = f.label :line_channel_access_token
-    = f.text_field :line_channel_access_token
-  div
-    = f.label :line_channel_secret
-    = f.text_field :line_channel_secret
-  div
-    = f.submit '保存'
+  section.grid.grif-cols-2.gap-y-2.py-2
+    .flex.py-1
+      .w-1/2.text-right
+        = f.label :line_channel_id, 'Channel ID：'
+      .w-1/2.px-2
+        = f.text_field :line_channel_id,
+        class: 'border w-4/5'
+    .flex.py-1
+      .w-1/2.text-right
+        = f.label :line_channel_secret, 'Channel secret：'
+      .w-1/2
+        = f.text_field :line_channel_secret,
+        class: 'border w-4/5'
+    .flex.py-1
+      .w-1/2.text-sm.text-right.
+        = f.label :line_channel_access_token, 'チャネルアクセストークン：'
+      .w-1/2
+        = f.text_field :line_channel_access_token,
+        class: 'border w-4/5'
+  .py-4
+    = f.submit '保存',
+    class: 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer'
