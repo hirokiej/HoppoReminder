@@ -1,21 +1,45 @@
 - set_meta_tags title: 'ほっぽリマインダー',
   description: '習い事の先生がLINE公式アカウントと連携して、生徒にレッスン時間変更を自動でリマインダーを送信できるアプリです。'
-.text-center
-  = image_tag 'logo.svg', class: 'mx-auto', alt: 'ほっぽリマインダーのロゴ'
-  p.text-lg
-  p
-    | ほっぽリマインダーは、
+
+.mx-3.my-8.md:mx-10
+  .text-center
+    h1
+      = image_tag 'logo.svg', class: 'mx-auto', alt: 'ほっぽリマインダーのロゴ'
+    p.text-lg.
+      | LINE公式アカウントと連携して、
+      br
+      | レッスン変更を自動で送信しませんか？
+      = render 'shared/login_button'
+
+  h3.text-xl.font-bold.my-1.mt-8.mb-2
+    | 生徒でレッスン一覧を選べる
+  .section.flex.py-5
+    .container.w-2/3.text-left.px-4.py-2
+        | 生徒ごとにレッスンを表示できます。
+        br
+        | レッスンを選択し変更したい日時を入力するだけで変更が完了します。
+    .md:w-1/3.flex.justify-center
+      = image_tag 'piano_sensei.png', alt: 'レッスン変更の様子'
+  h3.text-xl.font-bold.my-1.mb-2
+    | リマインダーを3通送信
+  .section.flex.py-5
+    .md:w-2/3.text-left
+      | ・変更を保存したタイミング
+      br
+      | ・元レッスンの前日20時
+      br
+      | ・変更後レッスンの前日20時
+    .md:w-1/3
+      = image_tag 'lesson_line.png', class: 'w-full max-w-md ml-auto mr-0 px-4', alt: 'LINE通知の例'
+  h3.text-xl.font-bold.my-1.mb-2
+    | 勘違いがなくなる
+  .section.flex.py-5
+    .container.w-2/3.text-left
+      | 前日にリマインダーが届くので
+      br
+      | 間違って教室に来てしまうことを防げます。
+    .md:w-1/3
+      = image_tag 'piano_girl.png', class: 'w-full max-w-sm ml-auto mr-0 px-4', alt: '元気に教室に向かう女の子'
     br
-    | 習い事の先生がレッスン変更と
-    br
-    | 生徒への公式ラインの予約投稿を同時にできるアプリです。
+  .text-center
     = render 'shared/login_button'
-    br
-    br
-
-  ここにアプリの説明
-
-  br
-  br
-
-  = render 'shared/login_button'
