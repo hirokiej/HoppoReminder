@@ -29,7 +29,8 @@ RUN apt-get update -qq && \
 ENV BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development:test" \
-    RAILS_ENV="production"
+    RAILS_ENV="production"\
+    PORT="8080"
 
 
 # Throw-away build stage to reduce size of final image
@@ -90,6 +91,6 @@ ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE 80
+EXPOSE 8080
 VOLUME /data
-CMD ["./bin/rake", "litestream:run", "./bin/thrust", "./bin/rails", "server"]
+CMD ["./bin/rails", "server"]
