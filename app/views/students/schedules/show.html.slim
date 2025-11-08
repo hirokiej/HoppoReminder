@@ -1,3 +1,5 @@
+- set_meta_tags title: '#{@student.real_name}のレッスン一覧', description: '各生徒のレッスン一覧ページです。'
+
 = turbo_frame_tag 'student_schedules' do
   = "#{@student.real_name}のレッスン一覧"
   - @schedules.each do |schedule|
