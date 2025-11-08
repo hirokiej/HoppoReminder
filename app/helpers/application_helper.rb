@@ -23,6 +23,6 @@ module ApplicationHelper
   end
 
   def format_japanese_datetime(datetime)
-    datetime.strftime('%-m月%-d日%H時%M分')
+    datetime.strftime('%-m月%02d日(%a) %H:%M')
   end
 end
