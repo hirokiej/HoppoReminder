@@ -1,8 +1,8 @@
 - set_meta_tags title: 'レッスン変更', description: 'レッスン変更ページです'
 
 = turbo_frame_tag 'modal' do
-  .bg-white.rounded-lg.shadow-lg.p-6.w-96.relative
-    h2.text-lg.font-bold.mb-4 #{@schedule.student.real_name}のレッスン変更
+  .relative.bg-white.rounded-lg.shadow-lg.p-6.w-96
+    h1.text-lg.font-bold.mb-4 #{@schedule.student.real_name}のレッスン変更
 
     p.text-gray-700.mb-2
       | 現在の日時：
@@ -18,8 +18,8 @@
           class: 'border rounded p-2 w-full'
 
       .flex.justify-end.gap-2
-        = f.submit '変更する',
-          class: 'bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded'
+        = f.submit '保存する',
+          class: 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer'
         = button_tag 'キャンセル', type: 'button',
           data: { action: 'click->modal#close' },
-          class: 'bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded'
+          class: 'bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 cursor-pointer'
