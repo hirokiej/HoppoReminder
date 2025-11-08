@@ -1,3 +1,5 @@
+- set_meta_tags title: 'レッスン一覧', description: 'レッスン一覧ページです。'
+
 = form_with url: '#', method: :get, data: { controller: 'schedules' } do |f|
   = f.label :student_id, 'レッスンを変更する生徒'
   = f.collection_select :student_id, current_user.students, :id, :real_name,
