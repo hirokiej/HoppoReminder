@@ -5,6 +5,7 @@
 )
   .absolute.top-20.right-108.bg-white.rounded-lg.shadow-lg.z-50
     ul
+      li.hover:bg-gray-200.px-4.py-2.whitespace-nowrap = link_to 'LINE公式情報の確認', line_info_admin_path(current_user)
       li.hover:bg-gray-200.px-4.py-2.whitespace-nowrap = link_to 'プライバシーポリシー', privacy_path
       li.hover:bg-gray-200.px-4.py-2.whitespace-nowrap = link_to '利用規約', term_path
       li.hover:bg-gray-200.px-4.py-2.whitespace-nowrap = link_to 'ログアウト', log_out_path
