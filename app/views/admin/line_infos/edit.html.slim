@@ -19,7 +19,7 @@ p.py-4
       class: 'text-blue-600 underline hover:text-gray-400',
       target: '_blank', rel: 'noopener'
 
-= form_with model: current_user, url: line_info_admin_path, method: :patch do |f|
+= form_with model: current_user, url: line_info_admin_path(current_user), method: :patch, local: true do |f|
   section.grid.grif-cols-2.gap-y-2.py-2
     .flex.py-1
       .w-1/2.text-right

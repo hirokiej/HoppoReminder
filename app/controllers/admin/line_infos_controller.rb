@@ -6,7 +6,7 @@ class Admin::LineInfosController < ApplicationController
   def update
     @admin = current_user
     if @admin.update(line_info_params)
-      redirect_to schedule_path, notice: 'LINE情報を更新しました'
+      redirect_to schedules_path, notice: 'LINE情報を更新しました'
     else
       log_out
       redirect_to root_path, notice: 'もう一度やり直してください'
