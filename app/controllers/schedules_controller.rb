@@ -50,7 +50,7 @@ class SchedulesController < ApplicationController
 
   def update_lesson_events(events)
     events.each do |event|
-      student = current_user.students.detect { |f| event[:summary].to_s.include?(f.real_name) }
+      student = Student.find_real_name(event, current_user.students)
 
       if student
         schedule = Schedule.find_or_initialize_by(google_event_id: event[:google_event_id])
