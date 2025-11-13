@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  if Rails.env.development?
-    def mock_login
-      admin = Admin.first
+  def mock_login
+    admin = Admin.find_by(name: 'ピアノの先生')
+    if admin
       session[:admin_id] = admin.id
       redirect_to schedules_path, notice: 'モックでログインしました'
     end
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_google_calendar_events(admin)
-    if Rails.env.development?
+    if admin.name == 'ピアノの先生'
       return [
         { google_event_id: '1', summary: 'テストレッスン１', start: Time.current + 3.days + 15.hours },
         { google_event_id: '2', summary: 'テストレッスン2', start: Time.current + 10.days + 15.hours }
