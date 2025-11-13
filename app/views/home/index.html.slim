@@ -43,3 +43,5 @@
     br
   .text-center
     = render 'shared/login_button'
+  - if Rails.env.development?
+    = link_to 'モックログイン(開発用)', mock_login_path, class: 'text-blue-600 hover:underline'
