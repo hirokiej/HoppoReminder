@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  # allow_browser versions: :modern
+  allow_browser versions: :modern
 
   include SessionsHelper
   helper NavigationHelper
   helper_method :current_user
 
-  before_action :check_logged_in
+  before_action :check_logged_in, except: :mock_login
 
   def check_logged_in
     return if current_user
@@ -14,9 +14,24 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  if Rails.env.development?
+    def mock_login
+      admin = Admin.first
+      puts "ooo"
+      session[:admin_id] = admin.id
+      redirect_to schedules_path, notice: 'モックでログインしました'
+    end
+  end
+
   private
 
   def fetch_google_calendar_events(admin)
+    if Rails.env.development?
+      return [
+        { google_event_id: '1', summary: 'テストレッスン１', start: Time.current + 3.days + 15.hours },
+        { google_event_id: '2', summary: 'テストレッスン2', start: Time.current + 10.days + 15.hours }
+      ]
+    end
     calendar_service = google_calendar_service_for(admin)
 
     response = calendar_service.list_events(
