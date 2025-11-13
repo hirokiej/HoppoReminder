@@ -13,7 +13,6 @@ export default class extends Controller {
 
   clickOutside(e) {
     if (e.target === e.currentTarget) {
-      console.log('oooooooooo')
       return this.toggle()
     }
   }

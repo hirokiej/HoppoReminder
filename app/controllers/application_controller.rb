@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   if Rails.env.development?
     def mock_login
       admin = Admin.first
-      puts "ooo"
       session[:admin_id] = admin.id
       redirect_to schedules_path, notice: 'モックでログインしました'
     end
