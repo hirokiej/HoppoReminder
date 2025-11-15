@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
     if current_user.update(user_params)
       redirect_to students_path, notice: '名前を変更しました'
     else
-      render :index
+      render students_path, alert: '名前を変更できませんでした'
     end
   end
 
