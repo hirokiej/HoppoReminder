@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+student_bob:
+  admin: alice
+  line_user_id: bobid
+  line_display_name: Bobby
+  real_name: ボブ
 
-one:
-  admin: one
-  line_user_id: MyString
-  line_display_name: MyString
-  real_name: MyString
-
-two:
-  admin: two
-  line_user_id: MyString
-  line_display_name: MyString
-  real_name: MyString
+student_charlie:
+  admin: alice
+  line_user_id: charlieid
+  line_display_name: charles
+  real_name: チャーリー
