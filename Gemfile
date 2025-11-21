@@ -80,7 +80,7 @@ group :test do
   gem 'mocha'
 end
 
-gem 'tailwindcss-rails', '~> 4.3'
+gem 'tailwindcss-rails', '~> 4.4'
 
 gem 'dockerfile-rails', '>= 1.7', group: :development
 
