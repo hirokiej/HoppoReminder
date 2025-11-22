@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       admin.line_channel_id.blank? ?
       line_info_admin_path(admin) :
       schedules_path,
-      notice: 'ログインしました'
+      notice: "#{current_user.name}でログインしました"
     )
   end
 
