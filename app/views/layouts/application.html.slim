@@ -5,6 +5,7 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = yield :head
+    = stylesheet_link_tag 'application'
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
     = stylesheet_link_tag 'fullcalendar/main.min', media: 'all'
     = javascript_importmap_tags
