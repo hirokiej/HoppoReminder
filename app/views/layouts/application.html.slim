@@ -5,6 +5,7 @@ html
     meta name="google-site-verification" content="cA4LHBjxOfR8AcTMnBGI2IAq1D2GOuw7liNDZxyyW-A"
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
     = yield :head
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
