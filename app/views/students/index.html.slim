@@ -9,22 +9,23 @@ p.pb-2
   = form_with model: current_user,
               url: bulk_update_students_path,
               method: :patch do |f|
-    table.container.mx-auto
-      thead
-        tr
-          th.pb-2 LINEの表示名
-          th.pb-2 カレンダーの登録名
-      tbody
-        - current_user.students.each do |student|
-          = f.fields_for :students, student do |s|
-            tr
-              td
-                = student.line_display_name
-              td
-                = s.hidden_field :id
-                = s.text_field :real_name, class: 'border border-gray-500'
-    .flex.justify-end.pt-3.mr-10
-      = f.submit '更新', class: 'text-white font-bold bg-blue-600 rounded-2xl px-5 px-2 hover:bg-blue-700'
+    .inline.mx-auto.px-6
+      table.container.w-2/3.mx-auto
+        thead.pb-2
+          tr.bg-sky-200.border-t.border-b-2.border-gray-300
+            th. LINEの表示名
+            th.last:text-right.px-2 カレンダーの登録名
+        tbody
+          - current_user.students.each do |student|
+            = f.fields_for :students, student do |s|
+              tr.bg-gray-50.border-b-2.border-gray-300
+                td.py-2
+                  = student.line_display_name
+                td.last:text-right
+                  = s.hidden_field :id
+                  = s.text_field :real_name, class: 'bg-white border border-gray-500 rounded-lg text-right px-2 mx-1'
+    .pt-3.mr-10
+      = f.submit '更新する', class: 'text-white font-bold bg-blue-600 rounded-2xl w-60 p-2 px-5 px-2 hover:bg-blue-700'
 - else
   p.text-sm
   | 本サービス登録後に生徒からトークを受信すると生徒が表示されます。
