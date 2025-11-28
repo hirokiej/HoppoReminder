@@ -124,6 +124,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     declarative (0.0.20)
+    docile (1.4.1)
     dockerfile-rails (1.7.10)
       rails (>= 3.0.0)
     dotenv (3.1.8)
@@ -422,6 +423,12 @@ GEM
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 4.0)
       multi_json (~> 1.10)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.2)
+    simplecov_json_formatter (0.1.4)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -540,6 +547,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rails-omakase
   selenium-webdriver
+  simplecov
   slim-rails
   slim_lint
   solid_cable
