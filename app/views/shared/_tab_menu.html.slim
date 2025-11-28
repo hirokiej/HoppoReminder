@@ -1,8 +1,11 @@
-ul.flex.border-b.list-none.bg-white.rounded-t-lg.shadow-sm
+ul.flex.border-b.border-gray-400.list-none.bg-gray-100.rounded-t-lg.shadow-sm
   - tabs.each do |tab|
-    li.mr-1
+    li.flex.mr-1.border.border-b-0.border-gray-400.rounded-t-lg
       - active = current_page?(tab[:path])
       = link_to tab[:name], tab[:path], \
       class: "inline-block py-2 px-5 rounded-t-lg font-medium transition-colors duration-200 \
-      #{active ? 'bg-gray-100 text-blue-600 border-b-2 border-blue-600 shadow-inner' \
-      : 'text-gray-600 border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300'}"
+      #{active ? 'bg-white text-blue-600 border-white -mb-1' \
+      : 'bg-gray-100 text-gray-600'}"
+  li.ml-auto
+  = link_to 'googleカレンダー', 'https://calendar.google.com/calendar/', \
+  class: "inline-block py-2 px-5 text-blue-600 hover:text-blue-800"
