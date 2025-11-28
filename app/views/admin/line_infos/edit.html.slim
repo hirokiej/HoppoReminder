@@ -1,44 +1,37 @@
 - set_meta_tags title: 'LINE公式の情報を登録', description: 'LINE公式の情報を入力するページです'
 
 h1.text-xl.font-bold.py-4
-  | 公式LINEの情報を入力
+  | 公式LINEの情報を入力してください
 .text-sm.px-4.py-2
-  p
-    | 公式LINEと本アプリを連携するために、
-    = link_to '公式LINEのアカウント', 'https://account.line.biz/login',
+  p.text-left
+    | 公式LINEと連携するため、
+    = link_to '公式LINEアカウント', 'https://account.line.biz/login',
         class: 'text-blue-600 underline hover:text-gray-400',
         target: '_blank', rel: 'noopener'
     | にログインし、必要な情報を入力してください。
-  p
+  p.text-left
     | ※ 取得した情報はアカウントへのアクセス権限を持つ重要な情報です。
     | 厳重に管理してください。
-    | 入力後は本アプリでは使用しないので、覚えておく必要はありません。
+    | 入力後は使用しないので、覚えておく必要はありません。
 p.py-4
-  | 情報取得方法は
-  = link_to 'こちら', 'https://scrapbox.io/HoppoReminder/LINE公式の情報取得方法',
+  = link_to '情報取得方法はこちら', 'https://scrapbox.io/HoppoReminder/LINE公式の情報取得方法',
       class: 'text-blue-600 underline hover:text-gray-400',
       target: '_blank', rel: 'noopener'
-
-= form_with model: current_user, url: line_info_admin_path(current_user), method: :patch, local: true do |f|
-  section.grid.grif-cols-2.gap-y-2.py-2
-    .flex.py-1
-      .w-1/2.text-right
-        = f.label :line_channel_id, 'Channel ID：'
-      .w-1/2.px-2
+.inline-box.mx-auto.px-6.mb-4.max-w-sm
+  = form_with model: current_user, url: line_info_admin_path(current_user), method: :patch, local: true do |f|
+    section.gap-y-2.py-2
+      .flex.flex-col
+        = f.label :line_channel_id, 'Channel ID', class: "text-left px-4 py-1"
         = f.text_field :line_channel_id,
-        class: 'border w-4/5'
-    .flex.py-1
-      .w-1/2.text-right
-        = f.label :line_channel_secret, 'Channel secret：'
-      .w-1/2
+        class: 'rounded text-right border mx-4 px-2'
+      .flex.flex-col
+        = f.label :line_channel_secret, 'Channel secret', class: "text-left px-4 py-1"
         = f.text_field :line_channel_secret,
-        class: 'border w-4/5'
-    .flex.py-1
-      .w-1/2.text-sm.text-right.
-        = f.label :line_channel_access_token, 'チャネルアクセストークン：'
-      .w-1/2
+        class: 'rounded text-right border  mx-4 px-2'
+      .flex.flex-col
+        = f.label :line_channel_access_token, 'チャネルアクセストークン', class: "text-left px-4 py-1"
         = f.text_field :line_channel_access_token,
-        class: 'border w-4/5'
-  .py-4
-    = f.submit '保存',
-    class: 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer'
+        class: 'rounded text-right border  mx-4 px-2'
+    .py-4
+      = f.submit '保存する',
+      class: 'bg-blue-600 text-white w-60 p-2 px-4 py-2 rounded-xl hover:bg-blue-700 cursor-pointer'
