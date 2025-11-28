@@ -23,7 +23,7 @@ class SchedulesController < ApplicationController
       update_google_event(@schedule)
       notification_message(first_start_at)
 
-      redirect_to schedules_path, notice: '日時を変更しました'
+      redirect_to schedules_path, notice: 'カレンダーの日時を変更し、LINEの投稿予約も完了しました'
     else
       redirect_to schedules_path, notice: '変更できませんでした'
     end
