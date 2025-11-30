@@ -33,6 +33,6 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
       schedule: { start_at: new_date }
      }
 
-    assert_redirected_to calendars_path
+    assert_redirected_to schedules_path
   end
 end
