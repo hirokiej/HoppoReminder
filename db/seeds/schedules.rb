@@ -1,13 +1,18 @@
+DEFAULT_LESSON_WEEKS = 12
+DEFAULT_START_HOUR = 15
+CALCULATE_WEEKDAY = 5
+CALCULATE_LESSON_TIME = 3
+WEEK_START = :monday
+
 students = Student.all
 
 today = Time.zone.today
-weeks = 12
 students.each_with_index do |student, i|
-  weekday = i % 5
-  start_hour = 15 + (i % 3)
+  weekday = i % CALCULATE_WEEKDAY
+  start_hour = DEFAULT_START_HOUR + (i % CALCULATE_LESSON_TIME)
 
-  weeks.times do |w|
-    lesson_day = today.beginning_of_week(:monday) + weekday.days + w.weeks
+  DEFAULT_LESSON_WEEKS.times do |w|
+    lesson_day = today.beginning_of_week(WEEK_START) + weekday.days + w.weeks
     start_at = lesson_day.to_time.change(hour: start_hour)
 
     Schedule.create!(
