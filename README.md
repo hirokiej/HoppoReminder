@@ -31,10 +31,6 @@ git clone https://github.com/hirokiej/hopporeminder.git
 ```
 cd hopporeminder
 ```
-PostgreSQLをインストール(既にPostgreSQLをインストール済の場合は不要です)。
-```
-brew install postgresql
-```
 セットアップを実行します。
 ```
 bin/setup
