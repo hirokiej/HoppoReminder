@@ -31,9 +31,38 @@ git clone https://github.com/hirokiej/hopporeminder.git
 ```
 cd hopporeminder
 ```
+Active Record Encryptionキーを設定します
+```
+EDITOR="vim" bin/rails credentials:edit
+```
+以下を入力
+```
+active_record_encryption:
+  primary_key: "12345678901234567890123456789012"
+  deterministic_key: "12345678901234567890123456789012"
+  key_derivation_salt: "12345678901234567890123456789012"
+
+```
+Seedデータを作成します。
+```
+bin/rails db:seed
+```
+
 セットアップを実行します。
 ```
 bin/setup
+```
+
+モックでログインができます。
+
+### Googleログインをする場合
+
+Google Cloudで以下２つの情報を取得し`EDITOR="vim" bin/rails credentials:edit`で設定をしてください。
+
+```
+omniauth:
+  google_client_id: "取得した値"
+  google_client_secret: "取得した値"
 ```
 
 ### Test
