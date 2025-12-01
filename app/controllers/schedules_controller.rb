@@ -88,9 +88,9 @@ class SchedulesController < ApplicationController
     )
   end
 
-  def enqueue_notification(wait_until, type)
+  def enqueue_notification(wait_until, timing)
     LessonTimeNotificationsJob
     .set(wait_until: wait_until)
-    .perform_later(@schedule.id, @schedule.student.id, type)
+    .perform_later(@schedule.id, @schedule.student.id, timing)
   end
 end
