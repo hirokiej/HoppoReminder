@@ -21,10 +21,11 @@
   h3.text-xl.font-bold.my-6
     =image_tag 'page-description.png', alt: 'レッスン変更画面'
   p.text-lg.font-bold.my-4
-    | ほっぽリマインダーはLINE公式と連携します
-  p.text-lg.my-6
-    | LINE公式の情報をログイン後に入力していただきます
-    | 
+    | ほっぽリマインダーは教室のLINE公式と連携して
+    br
+    | 生徒に自動でメッセージを送信します。
+    br
+    | ログイン後、LINE公式の情報を入力していただきます。
 
   = render 'shared/login_button'
   - if Rails.env.development?
