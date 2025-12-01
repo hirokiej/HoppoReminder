@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+  MOCK_ADMIN = 'ピアノの先生'
+  MOCK_CALENDAR_EVENTS = [
+    { google_event_id: '1', summary: 'テストレッスン１', start: Time.current + 3.days + 15.hours },
+    { google_event_id: '2', summary: 'テストレッスン2', start: Time.current + 10.days + 15.hours }
+  ]
+  GOOGLE_CALENDAR_MAX_RESULTS = 50
+  GOOGLE_CALENDAR_LOOKBACK = 1.year.ago
   allow_browser versions: :modern
 
   include SessionsHelper
@@ -25,20 +31,18 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_google_calendar_events(admin)
-    if admin.name == 'ピアノの先生'
-      return [
-        { google_event_id: '1', summary: 'テストレッスン１', start: Time.current + 3.days + 15.hours },
-        { google_event_id: '2', summary: 'テストレッスン2', start: Time.current + 10.days + 15.hours }
-      ]
+    if admin.name == MOCK_ADMIN
+      return MOCK_CALENDAR_EVENTS
     end
+
     calendar_service = google_calendar_service_for(admin)
 
     response = calendar_service.list_events(
       'primary',
-      max_results: 50,
+      max_results: GOOGLE_CALENDAR_MAX_RESULTS,
       single_events: true,
       order_by: 'startTime',
-      time_min: 1.year.ago.iso8601
+      time_min: GOOGLE_CALENDAR_LOOKBACK.iso8601
       )
 
     response.items.map do |schedule|
