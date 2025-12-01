@@ -2,4 +2,5 @@
   .flex.items-center.justify-center
     = link_to root_path do
       = image_tag 'logo_long.svg', class: 'h-14 w-auto'
-  = render 'shared/tab_menu', tabs: navigation_tabs
+  - if has_line_info?(current_user)
+    = render 'shared/tab_menu', tabs: navigation_tabs
