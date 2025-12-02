@@ -10,7 +10,7 @@ class LessonTimeNotificationsJob < ApplicationJob
     )
 
     message = message_templates(schedule)[timing.to_sym]
-    client.push_message(push_message_request: { to: student.line_user_id, timing: [ message ] })
+    client.push_message(push_message_request: { to: student.line_user_id, messages: [ message ] })
   end
 
   private
