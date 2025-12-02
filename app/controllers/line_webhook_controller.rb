@@ -1,6 +1,8 @@
 require 'line/bot'
 
 class LineWebhookController < ApplicationController
+  include Authenticatable
+
   protect_from_forgery with: :null_session
   skip_before_action :check_logged_in, only: [ :callback ]
 

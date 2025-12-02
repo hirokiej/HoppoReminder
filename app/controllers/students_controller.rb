@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  include Authenticatable
+
   def index
   end
 

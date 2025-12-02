@@ -1,4 +1,6 @@
 class Students::SchedulesController < ApplicationController
+  include Loginable
+
   TWO_MONTHS = 8
   def show
     @student = current_user.students.find(params[:id])
