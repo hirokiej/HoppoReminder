@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  include Authenticatable
+
   NOTICE_TIME_BEFORE_LESSON = 1.day
   NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
   NOTICE_HOUR = 20

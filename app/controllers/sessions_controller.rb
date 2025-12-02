@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_logged_in, only: :create
-
   def create
     admin = Admin.find_or_create_from_auth_hash(auth_hash)
     return redirect_to root_path, alert: 'ログインに失敗しました' unless admin
