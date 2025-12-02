@@ -8,24 +8,22 @@ class ApplicationController < ActionController::Base
   GOOGLE_CALENDAR_LOOKBACK = 1.year.ago
   allow_browser versions: :modern
 
-  include SessionsHelper
   helper NavigationHelper
   helper_method :current_user
 
-  before_action :check_logged_in, except: :mock_login
+  def current_user
+    return unless (admin_id = session[:admin_id])
 
-  def check_logged_in
-    return if current_user
-
-    redirect_to root_path, alert: 'ログインに失敗しました'
+    @current_user ||= Admin.find_by(id: admin_id)
   end
 
-  def mock_login
-    admin = Admin.find_by(name: 'ピアノの先生')
-    if admin
-      session[:admin_id] = admin.id
-      redirect_to schedules_path, notice: 'モックでログインしました'
-    end
+  def log_in(admin)
+    session[:admin_id] = admin.id
+  end
+
+  def log_out
+    session.delete(:admin_id)
+    @current_user = nil
   end
 
   private
