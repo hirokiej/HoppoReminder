@@ -47,6 +47,6 @@ class LineWebhookController < ApplicationController
     profile = client.get_profile(user_id: line_user_id)
     line_display_name = profile.display_name
 
-    @bot_account.students.create(line_user_id: line_user_id, line_display_name: line_display_name)
+    @bot_account.students.create(line_user_id: line_user_id, line_display_name: line_display_name, real_name: line_display_name)
   end
 end
