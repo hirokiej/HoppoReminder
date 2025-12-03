@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class StudentTest < ActiveSupport::TestCase
-  test 'should find real name' do
+  test 'should identify from summary' do
     bob_event = { summary: schedules(:bob_first_schedule).summary }
     charlie_event = { summary: schedules(:charlie_first_schedule).summary }
 
