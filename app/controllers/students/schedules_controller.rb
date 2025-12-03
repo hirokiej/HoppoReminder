@@ -1,5 +1,5 @@
 class Students::SchedulesController < ApplicationController
-  include Loginable
+  include Authenticatable
 
   TWO_MONTHS = 8
   def show
