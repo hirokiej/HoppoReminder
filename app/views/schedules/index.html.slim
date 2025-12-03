@@ -1,6 +1,6 @@
 - set_meta_tags title: 'レッスン一覧', description: 'レッスン一覧ページです。'
 
-- if current_user.students.with_real_name.present?
+- if current_user.students.present?
   = form_with url: '#', method: :get, data: { controller: 'schedules' } do |f|
       h1.text-xl.py-4.font-bold
         = f.label :student_id, 'レッスンを変更する生徒', class: 'block'
