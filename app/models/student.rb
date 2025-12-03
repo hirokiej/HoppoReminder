@@ -4,7 +4,7 @@ class Student < ApplicationRecord
 
   validates :real_name, presence: true, uniqueness: true
 
-  def self.find_real_name(event, students)
+  def self.identify_from_summary(event, students)
     students.detect do |student|
       event[:summary].to_s.include?(student.real_name)
     end

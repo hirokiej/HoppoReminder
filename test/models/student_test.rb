@@ -7,8 +7,8 @@ class StudentTest < ActiveSupport::TestCase
 
     students = Student.all
 
-    bob = Student.find_real_name(bob_event, students)
-    charlie = Student.find_real_name(charlie_event, students)
+    bob = Student.identify_from_summary(bob_event, students)
+    charlie = Student.identify_from_summary(charlie_event, students)
 
     assert_equal 'ボブ', bob.real_name
     assert_equal 'チャーリー', charlie.real_name
