@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   get 'privacy', to: 'home#privacy'
   get 'term', to: 'home#term'
 
-  get 'mock_login', to: 'application#mock_login' if Rails.env.development?
+  get 'mock_login', to: 'schedules#mock_login' if Rails.env.development?
 end
