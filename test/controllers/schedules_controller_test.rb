@@ -8,9 +8,9 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
 
     ApplicationController.any_instance.stubs(:current_user).returns(@admin)
 
-    SchedulesController.any_instance.stubs(:update_google_event)
-    SchedulesController.any_instance.stubs(:notification_message)
-    SchedulesController.any_instance.stubs(:fetch_google_calendar_events).returns(
+    Schedule.any_instance.stubs(:update_google_event)
+    Schedule.any_instance.stubs(:notification_message)
+    Schedule.any_instance.stubs(:fetch_google_calendar_events).returns(
       [
         {
           id: 'bob_lesson1_id',
