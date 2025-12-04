@@ -5,7 +5,7 @@ footer.bg-gray-100.border-t.border-gray-400.text-xs.text-center.pt-4.pb-3
     - if current_user
       li.inline-block.px-4.hover:underline.hover:text-gray-400 = link_to 'LINE公式情報の確認', line_info_admin_path(current_user)
       li.inline-block.px-4.hover:underline.hover:text-gray-400 = link_to 'ログアウト', log_out_path
-      li.inline-block.px-4.hover:underline.hover:text-gray-400 = link_to '退会する', admin_path(current_user)
+      li.inline-block.px-4.hover:underline.hover:text-gray-400 = link_to '退会する', admin_path(current_user), data: { turbo_method: :delete, turbo_confirm: '本当に退会しますか？' }
     li.text-xl.px-4.hover:text-gray-400
     = link_to 'https://github.com/hirokiej/HoppoReminder', target: '_blank', rel: 'noopener'
       = image_tag 'github-mark.svg', class: 'w-5', alt: 'GitHubのロゴ'
