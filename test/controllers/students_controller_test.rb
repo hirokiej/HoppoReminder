@@ -15,12 +15,10 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     patch bulk_update_students_path, params: {
-      admin: {
-        students_attributes: {
-          '0' => { id: @bob.id, real_name: '太郎' },
-          '1' => { id: @charlie.id, real_name: '次郎' }
-        }
-      }
+      students: [
+        { id: @bob.id, real_name: '太郎' },
+        { id: @charlie.id, real_name: '次郎' }
+      ]
     }
     @bob.reload
     @charlie.reload
