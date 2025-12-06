@@ -8,17 +8,23 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
 
     ApplicationController.any_instance.stubs(:current_user).returns(@admin)
 
+    @yesterday_lesson = Schedule.create!(
+      student: @student,
+      summary: '昨日のレッスン',
+      google_event_id: 'yesterday_lesson',
+      start_at: Time.current - 1.day
+    )
+
+    @tomorrow_lesson = Schedule.create!(
+      student: @student,
+      summary: '明日のレッスン',
+      google_event_id: 'tomorrow_lesson',
+      start_at: Time.current + 1.day
+    )
+
     Schedule.any_instance.stubs(:update_google_event)
     Schedule.any_instance.stubs(:notification_message)
-    Schedule.any_instance.stubs(:fetch_google_calendar_events).returns(
-      [
-        {
-          id: 'bob_lesson1_id',
-          start: Time.current,
-          summary: 'ボブのレッスン'
-        }
-      ]
-    )
+    Schedule.stubs(:fetch_google_calendar_events).returns([])
   end
 
   test 'should get edit' do
@@ -34,5 +40,15 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
      }
 
     assert_redirected_to schedules_path
+  end
+
+  test 'should display only start_today' do
+    get schedules_path
+    assert_response :success
+
+    upcoming_schedules = @student.schedules.start_today
+
+    assert_includes upcoming_schedules, @tomorrow_lesson
+    refute_includes upcoming_schedules, @yesterday_lesson
   end
 end
