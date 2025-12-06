@@ -13,6 +13,8 @@ class Schedule < ApplicationRecord
   NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
   NOTICE_HOUR = 20
 
+  scope :start_today, -> { where('start_at >= ?', Time.current) }
+
   def update_google_event(admin)
     service = self.class.google_calendar_service_for(admin)
     calendar_id = 'primary'
