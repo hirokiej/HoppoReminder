@@ -44,6 +44,7 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should display only start_today' do
     get schedules_path
+
     assert_response :success
 
     upcoming_schedules = @student.schedules.start_today
