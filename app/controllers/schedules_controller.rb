@@ -9,8 +9,7 @@ class SchedulesController < ApplicationController
     upcoming_schedules = schedules.select { |schedule| schedule[:start] >= Time.current }
     Schedule.update_lesson_events(upcoming_schedules, current_user)
 
-    today = Date.current
-    @schedules = @schedules.where('start_at >= ?', Time.current)
+    @schedules = @schedules.start_today
   end
 
   def edit;end
