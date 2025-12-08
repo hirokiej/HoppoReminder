@@ -32,10 +32,13 @@ git clone https://github.com/hirokiej/hopporeminder.git
 cd hopporeminder
 ```
 Active Record Encryptionキーを設定します
+
+ほっぽリマインダーでは`Active Record Encryption`を使用しています。
+データベースに保存される一部の情報は暗号化されるため、キーの設定が必要です。
 ```
 EDITOR="vim" bin/rails credentials:edit
 ```
-以下を入力
+以下の内容を追記して、キー作成します。
 ```
 active_record_encryption:
   primary_key: "12345678901234567890123456789012"
