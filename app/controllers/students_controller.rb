@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
     if @students_form.update(students_params)
       redirect_to students_path, notice: '名前を変更しました'
     else
-      render students_path, alert: '名前を変更できませんでした'
+      redirect_to students_path, alert: '名前を変更できませんでした'
     end
   end
 
