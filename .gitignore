@@ -36,8 +36,7 @@ node_modules/
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
-/config/credentials/*.key
 
 .DS_Store
 
-/config/credentials/production.key
+/coverage

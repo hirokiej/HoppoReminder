@@ -8,3 +8,213 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+.long-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  max-width: none;
+  word-break: break-word;
+  hanging-punctuation: allow-end;
+  text-align: left;
+}
+
+/* 要素間のブロック方向余白 */
+.long-text > * + * {
+  margin-block-start: 1rem;
+}
+
+/* 見出し */
+.long-text h1,
+.long-text h2,
+.long-text h3 {
+  font-weight: 600;
+  margin-block: 1.5rem 0.8rem;
+}
+
+.long-text h1 {
+  font-size: 1.4rem;
+}
+
+.long-text h2 {
+  font-size: 1.25rem;
+}
+
+.long-text h3 {
+  font-size: 1.1rem;
+}
+
+/* 見出し直後段落の余白抑制 */
+.long-text h1 + p,
+.long-text h2 + p,
+.long-text h3 + p {
+  margin-block-start: 0.4rem;
+}
+
+/* 段落 */
+.long-text p {
+  margin-block: 0.8rem;
+}
+
+/* 強調 */
+.long-text strong {
+  font-weight: 600;
+}
+
+/* 箇条書き */
+.long-text ul,
+.long-text ol {
+  padding-inline-start: 1.6em;
+  margin-block: 0.8rem;
+}
+
+.long-text li + li {
+  margin-block-start: 0.4rem;
+}
+
+/* 階層 */
+.long-text ol ol,
+.long-text ul ul {
+  margin-block-start: 0.3rem;
+  padding-inline-start: 1.2em;
+}
+
+/* 表 */
+.long-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.2rem;
+}
+
+.long-text th,
+.long-text td {
+  border: 1px solid currentColor;
+  border-opacity: 0.2;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.long-text th {
+  font-weight: 600;
+  text-align: left;
+}
+
+/* 水平線 */
+.long-text hr {
+  border: 0;
+  border-block-start: 1px solid currentColor;
+  border-opacity: 0.2;
+  margin-block: 1.6rem;
+}
+
+/* 画像（稀な利用を想定） */
+.long-text img {
+  max-width: 100%;
+  height: auto;
+  margin-block: 1.2rem;
+  display: block;
+}
+/* 長文向け（法務文書にも対応） */
+.long-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  max-width: none;
+  word-break: break-word;
+  hanging-punctuation: allow-end;
+}
+
+/* 要素間のブロック方向余白 */
+.long-text > * + * {
+  margin-block-start: 1rem;
+}
+
+/* 見出し */
+.long-text h1,
+.long-text h2,
+.long-text h3 {
+  font-weight: 600;
+  margin-block: 1.5rem 0.8rem;
+}
+
+.long-text h1 {
+  font-size: 1.4rem;
+}
+
+.long-text h2 {
+  font-size: 1.25rem;
+}
+
+.long-text h3 {
+  font-size: 1.1rem;
+}
+
+/* 見出し直後段落の余白抑制 */
+.long-text h1 + p,
+.long-text h2 + p,
+.long-text h3 + p {
+  margin-block-start: 0.4rem;
+}
+
+/* 段落 */
+.long-text p {
+  margin-block: 0.8rem;
+}
+
+/* 強調 */
+.long-text strong {
+  font-weight: 600;
+}
+
+/* 箇条書き */
+.long-text ul,
+.long-text ol {
+  padding-inline-start: 1.6em;
+  margin-block: 0.8rem;
+}
+
+.long-text li + li {
+  margin-block-start: 0.4rem;
+}
+
+/* 階層 */
+.long-text ol ol,
+.long-text ul ul {
+  margin-block-start: 0.3rem;
+  padding-inline-start: 1.2em;
+}
+
+/* 表 */
+.long-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.2rem;
+}
+
+.long-text th,
+.long-text td {
+  border: 1px solid currentColor;
+  border-opacity: 0.2;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.long-text th {
+  font-weight: 600;
+  text-align: left;
+}
+
+/* 水平線 */
+.long-text hr {
+  border: 0;
+  border-block-start: 1px solid currentColor;
+  border-opacity: 0.2;
+  margin-block: 1.6rem;
+}
+
+/* 画像（稀な利用を想定） */
+.long-text img {
+  max-width: 100%;
+  height: auto;
+  margin-block: 1.2rem;
+  display: block;
+}

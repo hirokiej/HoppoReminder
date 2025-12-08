@@ -1,13 +1,61 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  student: one
-  summary: MyString
-  google_event_id: MyString
-  start_at: 2025-10-29 00:51:41
+bob_first_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules1
+  start_at: 2028-10-20 15:00:00
 
-two:
-  student: two
-  summary: MyString
-  google_event_id: MyString
-  start_at: 2025-10-29 00:51:41
+bob_second_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules2
+  start_at: 2028-10-27 15:00:00
+
+bob_third_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules3
+  start_at: 2028-11-3 15:00:00
+
+bob_fourth_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules4
+  start_at: 2028-11-10 15:00:00
+
+bob_fifth_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules5
+  start_at: 2028-11-17 15:00:00
+
+bob_sixth_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules6
+  start_at: 2028-11-24 15:00:00
+
+bob_seventh_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules7
+  start_at: 2028-12-1 15:00:00
+
+bob_eighth_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules8
+  start_at: 2028-12-8 15:00:00
+
+bob_nineth_schedule:
+  student: student_bob
+  summary: ボブのレッスン
+  google_event_id: bobschedules9
+  start_at: 2028-12-15 15:00:00
+
+charlie_first_schedule:
+  student: student_charlie
+  summary: チャーリーのレッスン
+  google_event_id: charlieschedules1
+  start_at: 2028-10-20 15:45:00

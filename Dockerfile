@@ -30,7 +30,7 @@ ENV BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development:test" \
     RAILS_ENV="production"\
-    PORT="8080"
+    PORT="3000"
 
 
 # Throw-away build stage to reduce size of final image
@@ -91,6 +91,6 @@ ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE 8080
+EXPOSE 3000
 VOLUME /data
 CMD ["./bin/rails", "server"]

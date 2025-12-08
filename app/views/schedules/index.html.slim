@@ -1,22 +1,22 @@
 - set_meta_tags title: 'レッスン一覧', description: 'レッスン一覧ページです。'
 
-= form_with url: '#', method: :get, data: { controller: 'schedules' } do |f|
-  h1.text-xl.py-4.font-bold
-    = f.label :student_id, 'レッスンを変更する生徒', class: 'block'
-  - if current_user.present?
-    = f.collection_select :student_id, current_user.students, :id, :real_name,
-      { include_blank: '生徒を選択' },
-      { class: 'border border-px6',
-        data: { schedules_target: 'select',
-                action: 'change->schedules#changeStudent' } }
-    p.text-sm.py-1
-    | ※8回先のレッスンまでが表示されます。
-  - else
-    p
-    | 本サービス登録後、公式LINEに登録されている
-    br
-    | 生徒からトークを受信すると
-    br
-    | 生徒が選択できるようになります。
+- if current_user.students.present?
+  = form_with url: '#', method: :get, data: { controller: 'schedules' } do |f|
+      h1.text-xl.py-4.font-bold
+        = f.label :student_id, 'レッスンを変更する生徒', class: 'block'
+      = f.collection_select :student_id, current_user.students, :id, :real_name,
+        { include_blank: '生徒を選択' },
+        { class: 'border border-px6',
+          data: { schedules_target: 'select',
+                  action: 'change->schedules#changeStudent' } }
+      p.text-sm.py-1
+      | ※8回先のレッスンまでが表示されます。
+- else
+  p.py-4
+  | 公式LINEに登録されている
+  br
+  | 生徒からトークを受信すると
+  br
+  | 生徒が選択できるようになります。
 
 = turbo_frame_tag 'student_schedules'

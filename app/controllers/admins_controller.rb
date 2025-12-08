@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  include Authenticatable
   def destroy
     admin = Admin.find(params[:id])
     admin.destroy
