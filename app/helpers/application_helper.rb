@@ -12,7 +12,7 @@ module ApplicationHelper
         site_name: 'ほっぽリマインダー',
         description: :description,
         image: image_url('ogp.png'),
-        url: 'https://hopporeminder.com',
+        url: 'https://hopporeminder.fly.dev',
         local: 'ja-JP'
       },
       twitter: {

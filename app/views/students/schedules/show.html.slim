@@ -3,12 +3,16 @@
 = turbo_frame_tag 'student_schedules' do
   h1.text-lg.py-2
     = "#{@student.real_name}のレッスン一覧"
-  ul.flex.flex-col.items-center.gap-2
-    - @schedules.each do |schedule|
-      li.flex.items-center.w-fit.px-4.py-2.border.gap-8
-        span.inline-block.w-48
-          = format_japanese_datetime(schedule.start_at)
-        = link_to '変更', edit_schedule_path(schedule),
-          data: { turbo_frame: 'modal', action: 'click->modal#open' },
-          class: 'text-white text-sm bg-blue-600 justify-end border border-gray-500\
-            rounded-md py-1 px-3 hover:bg-blue-700 transition'
+  - if @schedules.present?
+    ul.flex.flex-col.items-center.gap-2
+      - @schedules.each do |schedule|
+        li.flex.items-center.w-fit.px-4.py-2.border.gap-8
+          span.inline-block.w-48
+            = format_japanese_datetime(schedule.start_at)
+          = link_to '変更', edit_schedule_path(schedule),
+            data: { turbo_frame: 'modal', action: 'click->modal#open' },
+            class: 'text-white text-sm bg-blue-600 justify-end border border-gray-500\
+              rounded-md py-1 px-3 hover:bg-blue-700 transition'
+  - else
+    p.text-sm.py-1
+    | レッスンはまだありません

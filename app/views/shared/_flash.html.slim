@@ -1,0 +1,7 @@
+- if flash[:notice]
+  .bg-blue-500.border-t.border-b.border-blue-200.text-white.px-4.py-2.text-center.rounded
+    = flash[:notice]
+
+- if flash[:alert]
+  .bg-red-500.border-t.border-b.border-red-200.text-white.px-4.py-2.text-center.rounded
+    = flash[:alert]

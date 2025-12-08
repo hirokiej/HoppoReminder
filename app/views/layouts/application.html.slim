@@ -2,18 +2,21 @@ doctype html
 html
   head
     meta name='viewport' content='width=device-width,initial-scale=1'
+    meta name="google-site-verification" content="cA4LHBjxOfR8AcTMnBGI2IAq1D2GOuw7liNDZxyyW-A"
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
     = yield :head
+    = stylesheet_link_tag 'application'
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
-    = stylesheet_link_tag 'fullcalendar/main.min', media: 'all'
     = javascript_importmap_tags
     = favicon_link_tag('favicon.ico')
     = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180×180', type: 'image/png'
-  body.bg-sky-200.max-w-screen-sm.mx-auto.min-h-screen.flex.flex-col
+  body.bg-sky-200.text-gray-700.max-w-screen-sm.mx-auto.min-h-screen.flex.flex-col
     = render 'shared/modal'
     = render 'layouts/header'
-    main.bg-gray-100.pb-2.flex-1
+    = render 'shared/flash'
+    main.bg-white.pb-2.flex-1
       .text-center
         = yield
     = render 'shared/footer'

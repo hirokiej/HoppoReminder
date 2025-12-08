@@ -1,11 +1,6 @@
 - if current_user
-  header data-controller='burger-menu'
-    .flex.items-center.justify-between
-      = link_to root_path do
-        = image_tag 'logo_long.svg', class: 'flex h-20 w-auto'
-      = image_tag 'burger_menu.svg',
-        class: 'rounded-lg hover:opacity-70 h-20 w-auto p-2 cursor-pointer',
-        alt: 'サイトに関するメニューです',
-        data: { action: 'click->burger-menu#toggle' }
-    = render 'shared/hamburger_menu'
+  .flex.items-center.justify-center
+    = link_to root_path do
+      = image_tag 'logo_long.svg', class: 'h-14 w-auto'
+  - if has_line_info?(current_user)
     = render 'shared/tab_menu', tabs: navigation_tabs
