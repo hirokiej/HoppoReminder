@@ -11,8 +11,8 @@
               td.py-2
                 = student.line_display_name
               td.last:text-right
-                  = hidden_field_tag "students[][id]", student.id
-                  = text_field_tag "students[][real_name]", student.real_name,
+                  = hidden_field_tag 'students[][id]', student.id
+                  = text_field_tag 'students[][real_name]', student.real_name,
                     class: 'bg-white border border-gray-500 rounded-lg text-right px-2 mx-1'
     .pt-3.mr-10
       = f.submit '更新する', class: 'text-white font-bold bg-blue-600 rounded-2xl w-60 p-2 px-5 px-2 hover:bg-blue-700'

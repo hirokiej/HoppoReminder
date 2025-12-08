@@ -21,15 +21,15 @@ p.py-4
   = form_with model: current_user, url: line_info_admin_path(current_user), method: :patch, local: true do |f|
     section.gap-y-2.py-2
       .flex.flex-col
-        = f.label :line_channel_id, 'Channel ID', class: "text-left px-4 py-1"
+        = f.label :line_channel_id, 'Channel ID', class: 'text-left px-4 py-1'
         = f.text_field :line_channel_id,
         class: 'rounded text-right border mx-4 px-2'
       .flex.flex-col
-        = f.label :line_channel_secret, 'Channel secret', class: "text-left px-4 py-1"
+        = f.label :line_channel_secret, 'Channel secret', class: 'text-left px-4 py-1'
         = f.text_field :line_channel_secret,
         class: 'rounded text-right border  mx-4 px-2'
       .flex.flex-col
-        = f.label :line_channel_access_token, 'チャネルアクセストークン', class: "text-left px-4 py-1"
+        = f.label :line_channel_access_token, 'チャネルアクセストークン', class: 'text-left px-4 py-1'
         = f.text_field :line_channel_access_token,
         class: 'rounded text-right border  mx-4 px-2'
     .py-4
