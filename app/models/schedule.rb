@@ -97,7 +97,7 @@ class Schedule < ApplicationRecord
         single_events: true,
         order_by: 'startTime',
         time_min: GOOGLE_CALENDAR_LOOKBACK.iso8601
-        )
+      )
 
       response.items.map do |schedule|
         {
