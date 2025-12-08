@@ -1,6 +1,8 @@
 class Admin < ApplicationRecord
   has_many :students, dependent: :destroy
 
+  validates :line_channel_id, :line_channel_secret, :line_channel_access_token, presence: true, on: :update
+
   encrypts :google_token, deterministic: true
   encrypts :google_refresh_token, deterministic: true
   encrypts :email, deterministic: true
