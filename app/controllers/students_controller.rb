@@ -1,13 +1,12 @@
 class StudentsController < ApplicationController
   include Authenticatable
 
-  def index
-    @students = current_user.students
-  end
+  before_action :set_students, only: %i[index bulk_update]
+
+  def index ;end
 
   def bulk_update
-    @students = current_user.students
-    @students_form = StudentsForm.new(current_user.students)
+    @students_form = StudentsForm.new(@students)
 
     if @students_form.update(students_params)
       redirect_to students_path, notice: '名前を変更しました'
@@ -25,5 +24,9 @@ class StudentsController < ApplicationController
       real_name: student['real_name']
       }
     end
+  end
+
+  def set_students
+    @students = current_user.students.order(:created_at)
   end
 end
