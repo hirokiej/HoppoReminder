@@ -15,7 +15,10 @@
           class: 'block text-sm font-medium text-gray-700 mb-1'
         = f.datetime_field :start_at,
           value: @schedule.start_at.to_date,
+          min: Time.current,
+          max: Time.current + 3.months,
           class: 'border rounded p-2 w-full'
+        p 3ヶ月先まで選択できます。
 
       .flex.justify-end.gap-2
         = f.submit '保存する',
