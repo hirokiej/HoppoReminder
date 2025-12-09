@@ -6,12 +6,14 @@ class StudentsController < ApplicationController
   end
 
   def bulk_update
+    @students = current_user.students
     @students_form = StudentsForm.new(current_user.students)
 
     if @students_form.update(students_params)
       redirect_to students_path, notice: '名前を変更しました'
     else
-      redirect_to students_path, alert: '名前を変更できませんでした'
+      flash[:alert] = '変更内容を入力してください'
+      render 'index',  status: :unprocessable_entity
     end
   end
 
