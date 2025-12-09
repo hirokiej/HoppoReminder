@@ -22,7 +22,8 @@ class SchedulesController < ApplicationController
 
       redirect_to schedules_path, notice: 'カレンダーの日時を変更し、LINEの投稿予約も完了しました'
     else
-      redirect_to schedules_path, notice: '変更できませんでした'
+      flash[:alert] = '変更できませんでした'
+      render :index,  status: :unprocessable_entity
     end
   end
 
