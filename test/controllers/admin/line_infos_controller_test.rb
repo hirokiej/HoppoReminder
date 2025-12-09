@@ -26,6 +26,7 @@ class Admin::LineInfosControllerTest < ActionDispatch::IntegrationTest
       admin: { line_channel_id: 123456789, line_channel_secret: '', line_channel_access_token: '' }
     }
 
-    assert_redirected_to line_info_admin_path(@admin)
+    assert_response :unprocessable_entity
+    assert_equal '全ての情報を入力してください', flash[:alert]
   end
 end
