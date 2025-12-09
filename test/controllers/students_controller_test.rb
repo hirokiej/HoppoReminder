@@ -26,4 +26,20 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
     assert_equal '太郎', @bob.real_name
     assert_equal '次郎', @charlie.real_name
   end
+
+  test 'should not update real name in bulk' do
+    get students_path
+
+    assert_response :success
+
+    patch bulk_update_students_path, params: {
+      students: [
+        { id: @bob.id, real_name: 'ボブ' },
+        { id: @charlie.id, real_name: 'チャーリー' }
+      ]
+    }
+
+    assert_response :unprocessable_entity
+    assert_equal '変更内容を入力してください', flash[:alert]
+  end
 end
