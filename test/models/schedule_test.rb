@@ -12,14 +12,14 @@ class ScheduleTest < ActiveSupport::TestCase
   test 'should start_today' do
     yesterday = Schedule.create!(
       student: @student,
-      summary: '昨日のレッスン',
+      summary: 'ボブの昨日のレッスン',
       google_event_id: 'yesterday_lesson',
       start_at: Time.current - 1.day
     )
 
     tomorrow = Schedule.create!(
       student: @student,
-      summary: '明日のレッスン',
+      summary: 'ボブの明日のレッスン',
       google_event_id: 'tomorrow_lesson',
       start_at: Time.current + 1.day
     )
