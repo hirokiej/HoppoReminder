@@ -9,7 +9,7 @@ class ScheduleTest < ActiveSupport::TestCase
     @schedules = @student.schedules
   end
 
-  test 'should start_today' do
+  test 'should display from today' do
     yesterday = Schedule.create!(
       student: @student,
       summary: '昨日のレッスン',
@@ -24,7 +24,7 @@ class ScheduleTest < ActiveSupport::TestCase
       start_at: Time.current + 1.day
     )
 
-    upcoming_schedules = Schedule.start_today
+    upcoming_schedules = Schedule.limited_upcoming_lessons
 
     assert_includes upcoming_schedules, tomorrow
     refute_includes upcoming_schedules, yesterday

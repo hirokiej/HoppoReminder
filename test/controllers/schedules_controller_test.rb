@@ -42,12 +42,12 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to schedules_path
   end
 
-  test 'should display only start_today' do
+  test 'should display from today' do
     get schedules_path
 
     assert_response :success
 
-    upcoming_schedules = @student.schedules.start_today
+    upcoming_schedules = @student.schedules.limited_upcoming_lessons
 
     assert_includes upcoming_schedules, @tomorrow_lesson
     refute_includes upcoming_schedules, @yesterday_lesson
