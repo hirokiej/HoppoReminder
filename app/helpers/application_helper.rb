@@ -23,6 +23,6 @@ module ApplicationHelper
   end
 
   def format_japanese_datetime(datetime)
-    datetime.strftime('%-m月%02d日(%a) %H:%M')
+    I18n.l(datetime, format: :with_weekday)
   end
 end

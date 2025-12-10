@@ -16,15 +16,17 @@ class LessonTimeNotificationsJob < ApplicationJob
   private
 
   def message_templates(schedule)
+    start_time = I18n.l(schedule.start_at, format: :with_weekday)
+
     {
       notice_now: {
         type: 'text',
-        text: "レッスン時間が変更になりました。#{schedule.start_at.strftime('%-m月%-d日%H時%M分')}です。"
+        text: "レッスン時間が変更になりました。#{start_time}です。"
       },
 
       before_lesson: {
         type: 'text',
-        text: "レッスンは明日、#{schedule.start_at.strftime('%-m月%-d日%H時%M分')}からあります。"
+        text: "レッスンは明日、#{start_time}からあります。"
       },
 
       no_lesson_tomorrow: {
