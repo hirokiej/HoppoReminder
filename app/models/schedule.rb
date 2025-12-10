@@ -15,7 +15,6 @@ class Schedule < ApplicationRecord
 
   TWO_MONTHS = 8
 
-  scope :start_today, -> { where('start_at >= ?', Time.current).order(:start_at) }
   scope :limited_upcoming_lessons, -> { where('start_at >= ?', Time.current).order(:start_at).limit(TWO_MONTHS) }
 
   def update_google_event(admin)

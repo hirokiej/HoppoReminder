@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedules
-    @schedules = Schedule.where(student: current_user.students).start_today
+    @schedules = Schedule.where(student: current_user.students).limited_upcoming_lessons
   end
 
   def set_schedule
