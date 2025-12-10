@@ -16,8 +16,10 @@ class LessonTimeNotificationsJobTest < ActiveJob::TestCase
   test 'message_templates return correct messages' do
     messages = @job.send(:message_templates, @schedule)
 
-    assert_equal "レッスン時間が変更になりました。#{@schedule.start_at.strftime('%-m月%-d日%H時%M分')}です。", messages[:notice_now][:text]
-    assert_equal "レッスンは明日、#{@schedule.start_at.strftime('%-m月%-d日%H時%M分')}からあります。", messages[:before_lesson][:text]
+    start_time = I18n.l(@schedule.start_at, format: :with_weekday)
+
+    assert_equal "レッスン時間が変更になりました。#{start_time}です。", messages[:notice_now][:text]
+    assert_equal "レッスンは明日、#{start_time}からあります。", messages[:before_lesson][:text]
     assert_equal '明日はお休みです。', messages[:no_lesson_tomorrow][:text]
   end
 end
