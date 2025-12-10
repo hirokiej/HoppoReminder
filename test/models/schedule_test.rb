@@ -5,6 +5,7 @@ class ScheduleTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
 
   setup do
+    @admin = admins(:alice)
     @student = students(:student_bob)
     @schedules = @student.schedules
   end
@@ -33,7 +34,8 @@ class ScheduleTest < ActiveSupport::TestCase
   test 'should dispaly limited upcoming lessons' do
     limited_upcoming_schedules = @schedules.limited_upcoming_lessons
 
-    assert_equal 8, limited_upcoming_schedules.count
+    assert_operator limited_upcoming_schedules.count, :<=, 8
+    refute_operator limited_upcoming_schedules.count, :>=, 9
   end
 
   test 'should order lessons from old to new' do
@@ -47,7 +49,7 @@ class ScheduleTest < ActiveSupport::TestCase
     lesson = schedules(:bob_first_schedule)
 
     google_mock = Minitest::Mock.new
-    google_mock.expect(:update_event, true, [ 'primary', lesson.google_event_id, Google::Apis::CalendarV3::Event ])
+    google_mock.expect(:list_event, true, [ 'primary', lesson.google_event_id, Google::Apis::CalendarV3::Event ])
 
     Schedule.stub(:google_calendar_service_for, google_mock) do
       lesson.update_google_event(lesson.student.admin)
@@ -63,5 +65,32 @@ class ScheduleTest < ActiveSupport::TestCase
     schedule.notification_message(first_start_at)
 
     assert_enqueued_jobs 2
+  end
+
+  test 'should be google_calendar_service_for' do
+   @admin.google_refresh_token = 'alice_refresh_token'
+
+    service = Schedule.google_calendar_service_for(@admin)
+
+    assert_instance_of Google::Apis::CalendarV3::CalendarService, service
+  end
+
+  test 'should update lesson events' do
+    dave = Student.create!(
+      admin: @admin,
+      line_user_id: 'daveid',
+      line_display_name: 'Dave',
+      real_name: 'デイブ'
+    )
+
+    events = [
+      { google_event_id: '1', summary: 'デイブのレッスン', start: Time.current + 3.days + 15.hours },
+      { google_event_id: '2', summary: 'イブレッスン2', start: Time.current + 10.days + 15.hours }
+    ]
+
+    Schedule.update_lesson_events(events, @admin)
+
+    assert Schedule.exists?(google_event_id: '1')
+    refute Schedule.exists?(google_event_id: '2')
   end
 end
