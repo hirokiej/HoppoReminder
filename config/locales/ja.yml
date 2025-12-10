@@ -1,0 +1,5 @@
+ja:
+  time:
+    formats:
+      default: '%Y/%m/%d %H:%M'
+      with_weekday: '%-m月%02d日(%a) %H時%M分'
