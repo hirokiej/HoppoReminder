@@ -36,6 +36,13 @@ class ScheduleTest < ActiveSupport::TestCase
     assert_equal 8, limited_upcoming_schedules.count
   end
 
+  test 'should order lessons from old to new' do
+    bob_schedules = @student.schedules.limited_upcoming_lessons
+
+    assert_equal schedules(:bob_first_schedule), bob_schedules.first
+    assert_equal schedules(:bob_eighth_schedule), bob_schedules.last
+  end
+
   test 'should update google event' do
     lesson = schedules(:bob_first_schedule)
 
