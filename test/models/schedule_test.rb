@@ -49,7 +49,7 @@ class ScheduleTest < ActiveSupport::TestCase
     lesson = schedules(:bob_first_schedule)
 
     google_mock = Minitest::Mock.new
-    google_mock.expect(:list_event, true, [ 'primary', lesson.google_event_id, Google::Apis::CalendarV3::Event ])
+    google_mock.expect(:update_event, true, [ 'primary', lesson.google_event_id, Google::Apis::CalendarV3::Event ])
 
     Schedule.stub(:google_calendar_service_for, google_mock) do
       lesson.update_google_event(lesson.student.admin)
