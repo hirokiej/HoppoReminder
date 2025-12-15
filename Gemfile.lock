@@ -203,7 +203,7 @@ GEM
       actionpack (>= 6.0.0, < 8.2)
     mini_mime (1.1.5)
     minitest (5.27.0)
-    mocha (2.8.2)
+    mocha (3.0.0)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
     multi_json (1.18.0)
