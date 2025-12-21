@@ -23,6 +23,6 @@ module ApplicationHelper
   end
 
   def format_japanese_datetime(datetime)
-    I18n.l(datetime, format: :with_weekday)
+    I18n.l(datetime, formats: :with_weekday)
   end
 end
