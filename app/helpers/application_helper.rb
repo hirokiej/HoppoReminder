@@ -25,4 +25,8 @@ module ApplicationHelper
   def format_japanese_datetime(datetime)
     I18n.l(datetime, formats: :with_weekday)
   end
+
+  def datetime_local(time)
+    time.strftime('%Y-%m-%dT%H:%M')
+  end
 end
