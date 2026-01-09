@@ -17,6 +17,6 @@ class Admin::LineInfosController < ApplicationController
   private
 
   def line_info_params
-    params.require(:admin).permit(:line_channel_id, :line_channel_access_token, :line_channel_secret)
+    params.expect(admin: [ :line_channel_id, :line_channel_access_token, :line_channel_secret ])
   end
 end
