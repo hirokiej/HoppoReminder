@@ -28,7 +28,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:start_at)
+    params.expect(schedule: [ :start_at ])
   end
 
   def set_schedules
