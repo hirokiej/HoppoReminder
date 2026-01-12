@@ -16,7 +16,7 @@ class LessonTimeNotificationsJob < ApplicationJob
   private
 
   def message_templates(schedule)
-    start_time = I18n.l(schedule.start_at, formats: :with_weekday)
+    start_time = I18n.l(schedule.start_at, format: :with_weekday)
 
     {
       notice_now: {
