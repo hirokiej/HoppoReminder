@@ -28,6 +28,7 @@ gem 'meta-tags'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'rails-i18n'
 gem 'slim-rails'
 
 group :development, :test do
@@ -44,7 +45,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
-  gem 'rails-i18n'
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
