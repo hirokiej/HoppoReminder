@@ -13,9 +13,9 @@ class Schedule < ApplicationRecord
   NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
   NOTICE_HOUR = 20
 
-  TWO_MONTHS = 8
+  MAX_UPCOMING_LESSONS = 8
 
-  scope :limited_upcoming_lessons, -> { where('start_at >= ?', Time.current).order(:start_at).limit(TWO_MONTHS) }
+  scope :limited_upcoming_lessons, -> { where('start_at >= ?', Time.current).order(:start_at).limit(MAX_UPCOMING_LESSONS) }
 
   def update_google_event(admin)
     service = self.class.google_calendar_service_for(admin)
