@@ -33,6 +33,7 @@ class LineWebhookController < ApplicationController
 
   def find_bot_admin_by_signature(body, signature)
     Admin.find_each do |admin|
+      next if admin.line_channel_secret.blank?
       return admin if valid_signature?(body, signature, admin.line_channel_secret)
     end
     nil
