@@ -94,7 +94,7 @@ class Schedule < ApplicationRecord
         max_results: GOOGLE_CALENDAR_MAX_RESULTS,
         single_events: true,
         order_by: 'startTime',
-        time_min: GOOGLE_CALENDAR_LOOKBACK.iso8601
+        time_min: Time.current.iso8601
       )
 
       response.items.map do |schedule|
