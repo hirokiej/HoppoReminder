@@ -12,7 +12,7 @@ class Schedule < ApplicationRecord
   NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
   NOTICE_HOUR = 20
 
-  MAX_UPCOMING_LESSONS = 8
+  MAX_UPCOMING_LESSONS = 4
 
   scope :limited_upcoming_lessons, -> { where('start_at >= ?', Time.current).order(:start_at).limit(MAX_UPCOMING_LESSONS) }
 
