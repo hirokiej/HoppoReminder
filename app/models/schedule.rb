@@ -6,8 +6,7 @@ class Schedule < ApplicationRecord
     { google_event_id: '1', summary: 'テストレッスン１', start: Time.current + 3.days + 15.hours },
     { google_event_id: '2', summary: 'テストレッスン2', start: Time.current + 10.days + 15.hours }
   ]
-  GOOGLE_CALENDAR_MAX_RESULTS = 50
-  GOOGLE_CALENDAR_LOOKBACK = 1.year.ago
+  GOOGLE_CALENDAR_MAX_RESULTS = 100
 
   NOTICE_TIME_BEFORE_LESSON = 1.day
   NOTICE_TIME_NO_LESSON_TOMORROW = 1.day
