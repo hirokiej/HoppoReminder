@@ -21,12 +21,12 @@ class LessonTimeNotificationsJob < ApplicationJob
     {
       notice_now: {
         type: 'text',
-        text: "レッスン時間が変更になりました。#{start_time}です。"
+        text: "レッスンの日程が変更になりました。次回は#{start_time}からです。"
       },
 
       before_lesson: {
         type: 'text',
-        text: "レッスンは明日、#{start_time}からあります。"
+        text: "レッスンは明日、#{start_time}からです。"
       },
 
       no_lesson_tomorrow: {
