@@ -1,18 +1,18 @@
   = form_with url: bulk_update_students_path, method: :patch do |f|
     .inline.mx-auto.px-6
-      table.container.w-2/3.mx-auto
+      table.container.w-4/5.mx-auto
         thead.pb-2
           tr.bg-sky-200.border-t.border-b-2.border-gray-300
-            th. LINEの表示名
-            th.last:text-right.px-2 カレンダーの登録名
-        tbody
+            th.w-1/2 LINEの表示名
+            th.w-1/2.last:text-right.px-2 カレンダーの登録名
+          tbody
           - @students.each do |student|
             tr.bg-gray-50.border-b-2.border-gray-300
-              td.py-2
+              td.w-1/2.py-2
                 = student.line_display_name
-              td.last:text-right
+              td.w-1/2.text-right
                   = hidden_field_tag 'students[][id]', student.id
                   = text_field_tag 'students[][real_name]', student.real_name,
-                    class: 'bg-white border border-gray-500 rounded-lg text-right px-2 mx-1'
+                    class: 'w-full bg-white border border-gray-500 rounded-lg text-right px-2 mx-1'
     .pt-3.mr-10
       = f.submit '更新する', class: 'text-white font-bold bg-blue-600 rounded-2xl w-60 p-2 px-5 px-2 hover:bg-blue-700'
