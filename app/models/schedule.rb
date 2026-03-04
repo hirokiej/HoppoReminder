@@ -35,7 +35,7 @@ class Schedule < ApplicationRecord
 
   def notification_message(first_start_at)
     notification_time = start_at
-    LessonTimeNotificationsJob.perform_now(id, student.id, :notice_now)
+    LessonTimeNotificationsJob.perform_now(id, student.id, :notice_now, first_start_at)
     self.enqueue_notification(
       (notification_time - NOTICE_TIME_BEFORE_LESSON).change(hour: NOTICE_HOUR, min: 0),
       :before_lesson
