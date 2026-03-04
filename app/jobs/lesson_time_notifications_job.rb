@@ -1,7 +1,7 @@
 class LessonTimeNotificationsJob < ApplicationJob
   queue_as :default
 
-  def perform(schedule_id, student_id, timing, first_start_at)
+  def perform(schedule_id, student_id, timing, first_start_at = nil)
     schedule = Schedule.find(schedule_id)
     student = Student.find(student_id)
 
@@ -17,7 +17,7 @@ class LessonTimeNotificationsJob < ApplicationJob
 
   def message_templates(schedule, first_start_at)
     start_time = format_time(schedule.start_at)
-    old_start_time = format_time(first_start_at)
+    old_start_time = format_time(first_start_at) if first_start_at.present?
 
     {
       notice_now: {
