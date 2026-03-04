@@ -40,10 +40,12 @@ class Schedule < ApplicationRecord
       (notification_time - NOTICE_TIME_BEFORE_LESSON).change(hour: NOTICE_HOUR, min: 0),
       :before_lesson
     )
-    self.enqueue_notification(
-      (first_start_at - NOTICE_TIME_NO_LESSON_TOMORROW).change(hour: NOTICE_HOUR, min: 0),
-      :no_lesson_tomorrow
-    )
+    if notification_time.day != first_start_at.day
+      self.enqueue_notification(
+        (first_start_at - NOTICE_TIME_NO_LESSON_TOMORROW).change(hour: NOTICE_HOUR, min: 0),
+        :no_lesson_tomorrow
+      )
+    end
   end
 
   private
