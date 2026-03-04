@@ -27,7 +27,7 @@ class LessonTimeNotificationsJob < ApplicationJob
 
       before_lesson: {
         type: 'text',
-        text: "レッスンは明日、#{start_time}からです。"
+        text: "レッスンは、#{start_time}からです。"
       },
 
       no_lesson_tomorrow: {
