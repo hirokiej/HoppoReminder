@@ -1,4 +1,0 @@
-production:
-  workers:
-    default:
-      threads: 2
