@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   def log_in(admin)
     session[:admin_id] = admin.id
+    session.options[:expire_after] = 30.days
   end
 
   def log_out
