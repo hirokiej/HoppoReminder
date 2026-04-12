@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/mock'
 
 class ScheduleTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
@@ -47,14 +46,13 @@ class ScheduleTest < ActiveSupport::TestCase
   test 'should update google event' do
     lesson = schedules(:bob_first_schedule)
 
-    google_mock = Minitest::Mock.new
-    google_mock.expect(:update_event, true, [ 'primary', lesson.google_event_id, Google::Apis::CalendarV3::Event ])
+    google_mock = mock('calendar_service')
+    google_mock.expects(:update_event)
+               .with('primary', lesson.google_event_id, instance_of(Google::Apis::CalendarV3::Event))
+               .returns(true)
 
-    Schedule.stub(:google_calendar_service_for, google_mock) do
-      lesson.update_google_event(lesson.student.admin)
-    end
-
-    google_mock.verify
+    Schedule.stubs(:google_calendar_service_for).returns(google_mock)
+    lesson.update_google_event(lesson.student.admin)
   end
 
   test 'should notificate messages' do
