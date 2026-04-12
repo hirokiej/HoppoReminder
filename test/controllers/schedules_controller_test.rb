@@ -42,14 +42,22 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to schedules_path
   end
 
-  test 'should display from today' do
+  test 'should display upcoming lessons and last ended lesson' do
+    second_last_ended_lesson = Schedule.create!(
+      student: @student,
+      summary: '2回前のレッスン',
+      google_event_id: 'second_last_ended_lesson',
+      start_at: @yesterday_lesson.start_at - 1.second
+    )
+
     get schedules_path
 
     assert_response :success
 
-    upcoming_schedules = @student.schedules.limited_upcoming_lessons
+    display_schedules = @student.schedules.display_lessons
 
-    assert_includes upcoming_schedules, @tomorrow_lesson
-    refute_includes upcoming_schedules, @yesterday_lesson
+    assert_includes display_schedules, @tomorrow_lesson
+    assert_includes display_schedules, @yesterday_lesson
+    refute_includes display_schedules, second_last_ended_lesson
   end
 end
