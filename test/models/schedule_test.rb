@@ -10,39 +10,38 @@ class ScheduleTest < ActiveSupport::TestCase
     @schedules = @student.schedules
   end
 
-  test 'should display from today' do
-    yesterday = Schedule.create!(
+  test 'should display upcoming lessons and last ended lesson' do
+    last_ended_lesson = Schedule.create!(
       student: @student,
       summary: 'ボブの昨日のレッスン',
-      google_event_id: 'yesterday_lesson',
+      google_event_id: 'last_ended_lesson',
       start_at: Time.current - 1.day
     )
 
-    tomorrow = Schedule.create!(
+    second_last_ended_lesson = Schedule.create!(
       student: @student,
-      summary: 'ボブの明日のレッスン',
-      google_event_id: 'tomorrow_lesson',
-      start_at: Time.current + 1.day
+      summary: 'ボブの2回前のレッスン',
+      google_event_id: 'second_last_ended_lesson',
+      start_at: last_ended_lesson.start_at - 1.second
     )
 
-    upcoming_schedules = Schedule.limited_upcoming_lessons
+    display_schedules = @student.schedules.display_lessons
 
-    assert_includes upcoming_schedules, tomorrow
-    refute_includes upcoming_schedules, yesterday
+    assert_includes display_schedules, last_ended_lesson
+    refute_includes display_schedules, second_last_ended_lesson
   end
 
-  test 'should dispaly limited upcoming lessons' do
-    limited_upcoming_schedules = @schedules.limited_upcoming_lessons
+  test 'should display limited lessons' do
+    limited_schedules = @schedules.display_lessons
 
-    assert_operator limited_upcoming_schedules.count, :<=, 8
-    refute_operator limited_upcoming_schedules.count, :>=, 9
+    assert_operator limited_schedules.count, :<=, Schedule::MAX_UPCOMING_LESSONS + 1
   end
 
   test 'should order lessons from old to new' do
-    bob_schedules = @student.schedules.limited_upcoming_lessons
+    bob_schedules = @student.schedules.display_lessons
 
     assert_equal schedules(:bob_first_schedule), bob_schedules.first
-    assert_equal schedules(:bob_eighth_schedule), bob_schedules.last
+    assert_equal schedules(:bob_fourth_schedule), bob_schedules.last
   end
 
   test 'should update google event' do
@@ -68,7 +67,7 @@ class ScheduleTest < ActiveSupport::TestCase
   end
 
   test 'should be google_calendar_service_for' do
-   @admin.google_refresh_token = 'alice_refresh_token'
+    @admin.google_refresh_token = 'alice_refresh_token'
 
     service = Schedule.google_calendar_service_for(@admin)
 
