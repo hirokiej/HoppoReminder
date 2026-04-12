@@ -42,6 +42,12 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to schedules_path
   end
 
+  test 'should get index' do
+    get schedules_path
+
+    assert_response :success
+  end
+
   test 'should display upcoming lessons and last ended lesson' do
     second_last_ended_lesson = Schedule.create!(
       student: @student,
@@ -51,8 +57,6 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
     )
 
     get schedules_path
-
-    assert_response :success
 
     display_schedules = @student.schedules.display_lessons
 
