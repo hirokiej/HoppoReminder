@@ -14,7 +14,11 @@ class Schedule < ApplicationRecord
 
   MAX_UPCOMING_LESSONS = 4
 
-  scope :limited_upcoming_lessons, -> { where('start_at >= ?', Time.current).order(:start_at).limit(MAX_UPCOMING_LESSONS) }
+  scope :display_lessons, -> {
+    upcoming_ids = where('start_at >= ?', Time.current).order(:start_at).limit(MAX_UPCOMING_LESSONS).pluck(:id)
+    last_ended_id = where('start_at < ?', Time.current).order(start_at: :desc).limit(1).pluck(:id)
+    where(id: upcoming_ids + last_ended_id).order(:start_at)
+  }
 
   def update_google_event(admin)
     service = self.class.google_calendar_service_for(admin)
