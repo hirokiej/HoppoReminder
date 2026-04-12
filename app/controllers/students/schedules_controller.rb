@@ -3,6 +3,6 @@ class Students::SchedulesController < ApplicationController
 
   def show
     @student = current_user.students.find(params[:id])
-    @schedules = @student.schedules.limited_upcoming_lessons
+    @schedules = @student.schedules.display_lessons
   end
 end
