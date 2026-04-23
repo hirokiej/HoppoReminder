@@ -32,7 +32,7 @@ class LessonTimeNotificationsJob < ApplicationJob
 
       no_lesson_tomorrow: {
         type: 'text',
-        text: '明日のレッスンはありません。'
+        text: '明日のレッスンは変更になりました。'
       }
     }
   end
