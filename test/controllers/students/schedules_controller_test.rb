@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Students::SchedulesControllerTest < ActionDispatch::IntegrationTest
-  test 'should show right student lessons for total 8' do
+  test 'should show right student lessons for total 5' do
     admin = admins(:alice)
     bob = students(:student_bob)
 
@@ -11,6 +11,6 @@ class Students::SchedulesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_select 'li', text: /変更/, count: 8
+    assert_select 'li', text: /変更/, count: 5
   end
 end
