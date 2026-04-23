@@ -1,3 +1,6 @@
 alice:
   name: 'alice'
   email: 'alice@example.com'
+  line_channel_id: dummy_channel_id
+  line_channel_secret: dummy_secret
+  line_channel_access_token: dummy_access_token
