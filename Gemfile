@@ -61,7 +61,7 @@ group :test do
   gem 'simplecov', require: false
 end
 
-gem 'tailwindcss-rails', '~> 4.3'
+gem 'tailwindcss-rails', '~> 4.6'
 
 gem 'dockerfile-rails', '>= 1.7', group: :development
 
