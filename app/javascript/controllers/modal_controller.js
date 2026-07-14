@@ -23,6 +23,7 @@ export default class extends Controller {
 
   disable(event) {
     const button = event.currentTarget
+    if (!button.form?.checkValidity()) return
     setTimeout(() => {
       button.disabled = true
       button.value = '保存中...'
