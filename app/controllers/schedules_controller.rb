@@ -13,8 +13,16 @@ class SchedulesController < ApplicationController
   def edit;end
 
   def update
-    first_start_at = @schedule.start_at
-    if @schedule.update(schedule_params)
+    @schedule.assign_attributes(schedule_params)
+
+    unless @schedule.start_at_changed?
+      redirect_to schedules_path, alert: '日時に変更がありません'
+      return
+    end
+
+    first_start_at = @schedule.start_at_was
+
+    if @schedule.save
       @schedule.update_google_event(current_user)
       @schedule.notification_message(first_start_at)
 
